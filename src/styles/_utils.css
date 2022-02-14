@@ -18,14 +18,17 @@
     max-width: 100%;
   }
 
-  & :not(:is(h1, h2, h3, h4)) {
+  & :not(h1, h2, h3, h4) {
     width: 40rem;
     max-width: 100%;
     font-size: 1.125rem;
     line-height: 1.55;
   }
 
-  & :is(h1, h2, h3, h4) {
+  & h1,
+  & h2,
+  & h3,
+  & h4 {
     width: 50rem;
     max-width: 100%;
     line-height: 1.1;
