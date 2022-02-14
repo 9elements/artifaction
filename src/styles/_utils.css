@@ -1,4 +1,4 @@
-[class^="container"] {
+[class*="container"] {
   --max-width: 80rem;
   width: var(--max-width);
   max-width: 100%;
@@ -21,7 +21,7 @@
   & :not(h1, h2, h3, h4) {
     width: 40rem;
     max-width: 100%;
-    font-size: 1.125rem;
+    font-size: var(--font-base);
     line-height: 1.55;
   }
 

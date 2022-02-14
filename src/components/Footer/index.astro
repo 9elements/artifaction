@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon"
+import cx from "classnames"
+
+import styles from "./styles.module.css"
+---
+
+<footer class={cx(styles.footer, "container")}>
+  <p>
+    &copy; {new Date().getFullYear()} – Artifaction
+  </p>
+  <Icon name="twitter" width="50" height="40" />
+
+  <nav aria-label="Footer" class={styles.nav}>
+    <ul class={styles.navItems}>
+      <li>
+        <a class={styles.navLink} href="/contact">Contact</a>
+      </li>
+      <li>
+        <a class={styles.navLink} href="/imprint">Impressum</a>
+      </li>
+    </ul>
+  </nav>
+</footer>

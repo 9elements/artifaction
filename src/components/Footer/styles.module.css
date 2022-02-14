@@ -1,0 +1,29 @@
+footer.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+  color: var(--color-primary);
+  font-size: var(--font-base);
+  font-weight: bold;
+  gap: 2rem;
+  padding-block: 4rem;
+  text-transform: uppercase;
+
+  @media (--md) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 2rem;
+  }
+}
+
+.navItems {
+  display: flex;
+  gap: 3ch;
+  gap: 1rem;
+  list-style-type: none;
+}
+
+.navLink {
+  text-decoration: none;
+}

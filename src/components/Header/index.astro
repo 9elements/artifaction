@@ -1,6 +1,7 @@
 ---
 import Logo from "../Logo/index.astro"
 
+import cx from "classnames"
 import styles from "./styles.module.css"
 
 const navItems = [
@@ -19,7 +20,7 @@ const navItems = [
 ]
 ---
 
-<header class={styles.header}>
+<header class={cx(styles.header, "container")}>
   <a href="/">
     <span class="sr-only">Artifaction</span>
     <Logo />

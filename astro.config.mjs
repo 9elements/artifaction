@@ -8,6 +8,9 @@
 
 // @ts-check
 export default /** @type {import('astro').AstroUserConfig} */ ({
-	// Comment out "renderers: []" to enable Astro's default component support.
-	renderers: [],
-});
+  // Comment out "renderers: []" to enable Astro's default component support.
+  ssr: {
+    external: ["svgo"],
+  },
+  renderers: [],
+})
