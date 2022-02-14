@@ -1,5 +1,6 @@
-.headline,
-.copy {
+[class^="container"] {
+  --max-width: 80rem;
+  width: var(--max-width);
   max-width: 100%;
   margin: 0 auto;
   padding-inline: 2rem;
@@ -7,20 +8,31 @@
 
 /* text content */
 .prose {
-  & > * + * {
-    margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  gap: 1.5rem;
+
+  & > * {
+    max-width: 100%;
   }
-}
 
-.headline {
-  width: 50rem;
-  margin-bottom: 0.75em;
-  font-size: var(--font-xl);
-  line-height: 1;
-}
+  & :not(:is(h1, h2, h3, h4)) {
+    width: 40rem;
+    max-width: 100%;
+    font-size: 1.125rem;
+    line-height: 1.55;
+  }
 
-.copy {
-  width: 40rem;
-  font-size: 1.125rem;
-  line-height: 1.55;
+  & :is(h1, h2, h3, h4) {
+    width: 50rem;
+    max-width: 100%;
+    line-height: 1.1;
+  }
+
+  & h2 {
+    margin-bottom: 0.5em;
+    font-size: var(--font-xl);
+  }
 }

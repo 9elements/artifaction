@@ -2,8 +2,21 @@
   position: sticky;
   top: 0;
   display: flex;
+  height: var(--nav-height);
+  align-items: center;
   justify-content: space-between;
-  padding: 3rem 5rem;
+  padding-inline: 2rem;
+
+  @media (--md) {
+    padding-inline: 5rem;
+  }
+
+  & a {
+    display: inline-flex;
+    min-height: 2.5rem;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .navItems {

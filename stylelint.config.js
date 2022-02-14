@@ -18,5 +18,11 @@ module.exports = {
         ignore: ["after-comment"],
       },
     ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        ignorePseudoClasses: ["global"],
+      },
+    ],
   },
 }

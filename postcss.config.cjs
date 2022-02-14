@@ -3,7 +3,7 @@ const postcssPresetEnv = require("postcss-preset-env")
 module.exports = {
   plugins: [
     postcssPresetEnv({
-      stage: 0,
+      stage: 2,
       features: {
         "nesting-rules": true,
         "custom-properties": false,

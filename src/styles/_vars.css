@@ -13,4 +13,7 @@
   /* Font sizes */
   --font-base: 1.125rem;
   --font-xl: 4.5rem;
+
+  /* Global sizes */
+  --nav-height: 4.5rem;
 }

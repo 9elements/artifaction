@@ -55,6 +55,15 @@ a {
 }
 
 /* Specific */
+:focus-visible {
+  outline: 2px dashed currentColor;
+  outline-offset: 0.125rem;
+}
+
+::selection {
+  background-color: rgb(255 255 255 / 0.2);
+}
+
 body {
   background-color: var(--color-dark);
   color: var(--color-text);
