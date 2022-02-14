@@ -1,4 +1,4 @@
-# Artifaction - NFT Landing Pate
+# Artifaction - NFT Landing Page
 
 > Built with [Astro](https://astro.build/) and [PostCSS](https://postcss.org/)
 
@@ -11,6 +11,12 @@ yarn install
 # Start local server
 yarn dev
 ```
+
+## Development
+
+In order to keep the project tidy, we use stylelint and prettier. If you use VS Code, you can download [Stylelint for VSCode](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint) and [Prettier vor VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode).
+
+Ideally you should enable `editor.formatOnSave` in your settings to automatically beautify and fix template/style errors.
 
 ## Deployment
 
