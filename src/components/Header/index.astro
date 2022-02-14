@@ -1,0 +1,36 @@
+---
+import Logo from "../Logo/index.astro"
+
+import styles from "./styles.module.css"
+
+const navItems = [
+  {
+    name: "What",
+    path: "#what",
+  },
+  {
+    name: "How",
+    path: "#how",
+  },
+  {
+    name: "Who",
+    path: "#who",
+  },
+]
+---
+
+<header class={styles.header}>
+  <Logo />
+
+  <nav>
+    <ul class={styles.navItems}>
+      {navItems.map(({ name, path }) => (
+        <li>
+          <a class={styles.navLink} href={path}>
+            {name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,9 @@
+.button {
+  height: 3rem;
+  border: 1px solid currentColor;
+  background: none;
+  color: var(--color-primary);
+  cursor: pointer;
+  font-weight: bold;
+  padding-inline: 1.5rem;
+}

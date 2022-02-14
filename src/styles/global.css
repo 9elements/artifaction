@@ -1,7 +1,8 @@
 @import "modern-normalize";
-@import "./vars.css";
-@import "./utils.css";
-@import "./fonts.css";
+@import "./_vars.css";
+@import "./_utils.css";
+@import "./_fonts.css";
+@import "./atoms/_button.css";
 
 /* generic */
 
@@ -16,6 +17,13 @@
 html,
 body {
   min-height: 100%;
+}
+
+img,
+svg,
+iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 .sr-only {
@@ -53,6 +61,12 @@ body {
   font-family: var(--font-sans);
 }
 
-:is(h1, h2, h3, h4, a) {
+:is(h1, h2, h3, h4) {
   color: var(--color-primary);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+}
+
+section {
+  padding-block: 4rem;
 }

@@ -1,0 +1,26 @@
+.headline,
+.copy {
+  max-width: 100%;
+  margin: 0 auto;
+  padding-inline: 2rem;
+}
+
+/* text content */
+.prose {
+  & > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+.headline {
+  width: 50rem;
+  margin-bottom: 0.75em;
+  font-size: var(--font-xl);
+  line-height: 1;
+}
+
+.copy {
+  width: 40rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}

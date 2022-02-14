@@ -1,0 +1,23 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 5rem;
+}
+
+.navItems {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  gap: 3ch;
+  list-style: none;
+}
+
+.navLink {
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}

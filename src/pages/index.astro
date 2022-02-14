@@ -1,7 +1,45 @@
 ---
 import Layout from "../layouts/default.astro"
+import IntroGraphics from "../components/IntroGraphics/index.astro"
 ---
 
 <Layout>
-  <h1>Index page</h1>
+  <h1 class="sr-only">ARTIFICATION</h1>
+
+  <section class="section intro">
+    <IntroGraphics />
+    <button class="button">Generate</button>
+  </section>
+
+  <section class="section prose">
+    <h2 class="headline">WHAT</h2>
+    <div class="copy">
+      <p>
+        Artifaction is a collaborative project in which designers and coders
+        have joined forces to dive deeper into creative coding and the crypto
+        space. We have developed generative artworks, which we call Artifacts.
+        The artworks are stored immutably on the Ethereum Blockchain and a new
+        pattern is generated with every click. Don't like it? Just click again –
+        then the first one is lost forever, but the next one might be so
+        beautiful that it could become your next tattoo.
+      </p>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .intro {
+    width: 80rem;
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+    gap: 1rem;
+
+    & .button {
+      align-self: flex-end;
+    }
+  }
+</style>

@@ -4,8 +4,13 @@
   --color-primary: hsl(99 100% 80%);
   --color-text: hsl(0 0% 100%);
 
-  /* Font */
+  /* Font Families */
   --font-sans: "Montserrat", apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol";
+  --font-display: "TT Travels Next", var(--font-sans);
+
+  /* Font sizes */
+  --font-base: 1.125rem;
+  --font-xl: 4.5rem;
 }

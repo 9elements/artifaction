@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "emmet.includeLanguages": {
+    "*.astro": "postcss"
+  }
+}
