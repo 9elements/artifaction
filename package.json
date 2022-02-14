@@ -1,5 +1,5 @@
 {
-  "name": "@example/minimal",
+  "name": "artification",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -17,5 +17,8 @@
     "stylelint": "^14.5.0",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-recommended": "^7.0.0"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
   }
 }

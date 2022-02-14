@@ -7,9 +7,9 @@ module.exports = {
       features: {
         "nesting-rules": true,
         "custom-properties": false,
-        // "custom-media-queries": {
-        //   importFrom: "./src/styles/_queries.css", // file with custom media queries
-        // },
+        "custom-media-queries": {
+          importFrom: "./src/styles/_media.css", // file with custom media queries
+        },
         "prefers-color-scheme-query": false,
       },
     }),

@@ -1,0 +1,2 @@
+@custom-media --md (min-width: 48em);
+@custom-media --reduced-motion (prefers-reduced-motion: reduce);
