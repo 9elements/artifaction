@@ -14,7 +14,7 @@
   @media (--md) {
     display: grid;
     align-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 0.5fr 1fr;
     justify-items: center;
 
     & > :first-child {
@@ -32,6 +32,10 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.copyright {
+  white-space: nowrap;
 }
 
 .navItems {
