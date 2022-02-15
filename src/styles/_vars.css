@@ -18,8 +18,8 @@
   --font-display: "TT Travels Next", var(--font-sans);
 
   /* Font sizes */
-  --font-base: 1.125rem;
-  --font-xl: 4.5rem;
+  --font-base: clamp(1rem, 2.5vw, 1.125rem);
+  --font-xl: clamp(3rem, 6vw, 4.5rem);
 
   /* Easings (https://gist.github.com/argyleink/36e1c0153d2a783d513bd29c9f25aaf2) */
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
