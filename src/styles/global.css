@@ -60,7 +60,7 @@ a {
 
 /* Specific */
 :focus-visible {
-  outline: 2px dashed currentColor;
+  outline: 2px dashed var(--color-primary);
   outline-offset: 0.125rem;
 }
 

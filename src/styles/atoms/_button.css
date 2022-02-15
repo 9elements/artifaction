@@ -1,13 +1,38 @@
 .button {
   --opacity: 0.1;
-  height: 3rem;
-  border: 1px solid currentColor;
-  background: none;
+  --transition-duration: 0.4s;
 
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  border: 1px solid var(--color-primary);
+  background: none;
   color: var(--color-primary);
   cursor: pointer;
   font-size: var(--font-base);
   font-weight: bold;
   padding-inline: 1.5rem;
   text-transform: uppercase;
+  transition: color var(--transition-duration) var(--ease-in-out-cubic);
+
+  &::after {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-green);
+    content: "";
+    inset: 0;
+    transform: translate3d(0, 100%, 0);
+    transition: all var(--transition-duration) var(--ease-in-out-cubic);
+  }
+
+  &:hover,
+  &:active {
+    color: var(--color-dark);
+
+    &::after {
+      transform: translate3d(0, 0, 0) skewY(-14deg) scale(1, 3);
+    }
+  }
 }
