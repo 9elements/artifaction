@@ -8,7 +8,7 @@ const { title, description } = Astro.props
 const pageDescription =
   description ||
   "A generative project that creates unique visual objects through the random composition of different geometric artifacts. You can generated new visuals by your own with a single click. Don't like it? Just click again – then the first one is lost forever, but the next one might be so beautiful that it could become your next tattoo."
-const pageTitle = `${title ? `${title} –` : ""} ARTIFICATION`
+const pageTitle = `${title ? `${title} –` : ""} ARTIFACTION`
 ---
 
 <!-- TODO: Proper Meta description and Image -->
@@ -40,6 +40,8 @@ const pageTitle = `${title ? `${title} –` : ""} ARTIFICATION`
     <slot />
 
     <Footer />
+
+    <script src={Astro.resolve("../js/p5.min.js")}></script>
   </body>
 </html>
 

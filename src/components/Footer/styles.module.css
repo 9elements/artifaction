@@ -1,7 +1,7 @@
 .footer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin-top: 4rem;
   color: var(--color-primary);
   font-size: var(--font-base);
@@ -13,7 +13,7 @@
 
   @media (--md) {
     display: grid;
-    align-items: center;
+
     grid-template-columns: 1fr 0.5fr 1fr;
     justify-items: center;
 
