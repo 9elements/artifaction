@@ -1,0 +1,21 @@
+<svg
+  width="420"
+  height="420"
+  viewBox="0 0 420 420"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <rect width="420" height="420" />
+
+  <style>
+    rect {
+      fill: #1d1d1b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      rect {
+        fill: #fff;
+      }
+    }
+  </style>
+</svg>

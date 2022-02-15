@@ -34,7 +34,8 @@
   }
 
   &:hover,
-  &:active {
+  &:active,
+  &:focus-visible {
     color: var(--color-dark);
 
     &::after {

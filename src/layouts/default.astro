@@ -9,6 +9,7 @@ const pageDescription =
   description ||
   "A generative project that creates unique visual objects through the random composition of different geometric artifacts. You can generated new visuals by your own with a single click. Don't like it? Just click again – then the first one is lost forever, but the next one might be so beautiful that it could become your next tattoo."
 const pageTitle = `${title ? `${title} –` : ""} ARTIFACTION`
+const hash = Math.random().toString().substring(2, 12)
 ---
 
 <!-- TODO: Proper Meta description and Image -->
@@ -17,7 +18,18 @@ const pageTitle = `${title ? `${title} –` : ""} ARTIFACTION`
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="favicon.png" />
+    <link
+      rel="icon"
+      href={`./favicons/favicon.png?${hash}`}
+      type="image/png"
+      sizes="any"
+    />
+    <link
+      rel="icon"
+      href={`./favicons/favicon-frame-06.svg?${hash}`}
+      type="image/svg+xml"
+    />
+
     <title>{pageTitle}</title>
 
     <meta name="title" content={pageTitle} />
@@ -42,6 +54,22 @@ const pageTitle = `${title ? `${title} –` : ""} ARTIFACTION`
     <Footer />
 
     <script src={Astro.resolve("../js/p5.min.js")}></script>
+    <script src={Astro.resolve("../js/favicon.min.js")}></script>
+    <script>
+      favicon.animate(
+        [
+          "./favicons/favicon-frame-01.svg",
+          "./favicons/favicon-frame-02.svg",
+          "./favicons/favicon-frame-03.svg",
+          "./favicons/favicon-frame-04.svg",
+          "./favicons/favicon-frame-05.svg",
+          "./favicons/favicon-frame-06.svg",
+          "./favicons/favicon-frame-07.svg",
+          "./favicons/favicon-frame-08.svg",
+        ],
+        1100
+      )
+    </script>
   </body>
 </html>
 
