@@ -2,9 +2,12 @@
   position: sticky;
   top: 0;
   display: flex;
-  height: var(--nav-height);
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  column-gap: 2rem;
+  padding-block: 1rem;
+  row-gap: 0.5rem;
 
   & a {
     display: inline-flex;
@@ -12,6 +15,10 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.logoWrapper {
+  flex-shrink: 0;
 }
 
 .navItems {

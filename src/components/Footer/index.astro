@@ -5,15 +5,17 @@ import cx from "classnames"
 import styles from "./styles.module.css"
 ---
 
-<footer class={cx(styles.footer, "container")}>
+<footer class={cx(styles.footer, "container--wide")}>
   <p>
     &copy; {new Date().getFullYear()} – Artifaction
   </p>
 
-  <a href="https://twitter.com/Artifaction_">
-    <span class="sr-only">Follow Artifaction on Twitter</span>
-    <Icon name="twitter" width="50" height="40" />
-  </a>
+  <div>
+    <a href="https://twitter.com/Artifaction_">
+      <span class="sr-only">Follow Artifaction on Twitter</span>
+      <Icon name="twitter" width="50" height="40" />
+    </a>
+  </div>
 
   <nav aria-label="Footer" class={styles.nav}>
     <ul class={styles.navItems}>

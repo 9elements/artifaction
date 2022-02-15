@@ -1,9 +1,12 @@
 .button {
+  --opacity: 0.1;
   height: 3rem;
   border: 1px solid currentColor;
   background: none;
+
   color: var(--color-primary);
   cursor: pointer;
+  font-size: var(--font-base);
   font-weight: bold;
   padding-inline: 1.5rem;
   text-transform: uppercase;

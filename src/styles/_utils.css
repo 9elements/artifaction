@@ -1,9 +1,14 @@
+/* Container */
 [class*="container"] {
-  --max-width: 80rem;
+  --max-width: 48rem;
   width: var(--max-width);
   max-width: 100%;
   margin: 0 auto;
   padding-inline: 2rem;
+}
+
+.container--wide {
+  --max-width: 80rem;
 }
 
 /* text content */

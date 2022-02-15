@@ -20,13 +20,13 @@ const navItems = [
 ]
 ---
 
-<header class={cx(styles.header, "container")}>
-  <a href="/">
+<header class={cx(styles.header, "container--wide")}>
+  <a href="/" class={styles.logoWrapper}>
     <span class="sr-only">Artifaction</span>
     <Logo />
   </a>
 
-  <nav>
+  <nav aria-label="Main">
     <ul class={styles.navItems}>
       {navItems.map(({ name, path }) => (
         <li>
