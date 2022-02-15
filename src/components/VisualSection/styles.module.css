@@ -1,0 +1,11 @@
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 4rem;
+  gap: 1rem;
+
+  & :first-child {
+    --color: var(--color-pink);
+  }
+}

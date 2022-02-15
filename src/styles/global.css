@@ -84,7 +84,7 @@ h4 {
   text-transform: uppercase;
 }
 
-section {
-  padding-block: 4rem;
+.section {
+  padding-block: clamp(3rem, 5vw, 4rem);
   padding-inline: 1rem;
 }

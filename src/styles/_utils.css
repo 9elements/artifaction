@@ -1,18 +1,18 @@
 /* Container */
 [class*="container"] {
   --max-width: 50rem;
-  --padding-inline: 2rem;
-  width: var(--max-width);
-  max-width: 100%;
+  --padding-inline: 1rem;
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding-inline: var(--padding-inline);
 }
 
-.container--narrow {
-  --max-width: calc(var(--max-width-prose) + var(--padding-inline));
+.container--wide {
+  --max-width: 56rem;
 }
 
-.container--wide {
+.container--full {
   --max-width: 80rem;
 }
 
@@ -25,12 +25,12 @@
   gap: 1.5rem;
 
   & > * {
-    max-width: 100%;
+    width: 100%;
+    max-width: var(--max-width-prose);
   }
 
   & :not(h1, h2, h3, h4) {
-    width: var(--max-width-prose);
-    max-width: 100%;
+    width: 100%;
     font-size: var(--font-base);
     line-height: 1.55;
   }
@@ -39,8 +39,8 @@
   & h2,
   & h3,
   & h4 {
-    width: 50rem;
-    max-width: 100%;
+    width: 100%;
+    max-width: 50rem;
     line-height: 1.1;
   }
 

@@ -23,7 +23,7 @@
 
   /* General */
   --focus-outline-color: var(--color-primary);
-  --max-width-prose: 42rem;
+  --max-width-prose: 55rem;
 
   /* Easings (https://gist.github.com/argyleink/36e1c0153d2a783d513bd29c9f25aaf2) */
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);

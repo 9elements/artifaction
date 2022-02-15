@@ -1,14 +1,37 @@
 .intro {
+  --max-width: 55rem;
+
   display: flex;
-  width: 80rem;
-  max-width: 100%;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
-  gap: 1rem;
+
   padding-inline: 1rem;
+  text-align: center;
 
   & :global(.button) {
     align-self: flex-end;
+  }
+}
+
+.heading {
+  margin-bottom: 0.75em;
+  font-size: var(--font-xl);
+}
+
+.nav {
+  padding-top: 2rem;
+}
+
+.navItems {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  gap: 1rem;
+
+  & li {
+    padding: 0;
+    list-style-type: none;
   }
 }

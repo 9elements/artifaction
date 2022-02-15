@@ -1,10 +1,28 @@
 ---
-import IntroGraphics from "../IntroGraphics/index.astro"
-
+import cx from "classnames"
 import styles from "./styles.module.css"
 ---
 
-<section class={`section ${styles.intro}`}>
-  <IntroGraphics />
-  <button class="button">Generate</button>
+<section class={cx("section container", styles.intro)}>
+  <h1 class={styles.heading}>the beauty of visual errors</h1>
+  <div class="prose">
+    <p>
+      A generative project that creates unique visual objects through the random
+      composition of different geometric artifacts. You can generated new
+      visuals by your own with a single click. Don't like it? Just click again –
+      then the first one is lost forever, but the next one might be so beautiful
+      that it could become your next tattoo.
+    </p>
+  </div>
 </section>
+
+<nav aria-label="Main" class={cx("container section", styles.nav)}>
+  <ul class={styles.navItems}>
+    <li>
+      <a href="#how-it-works" class="button">How it works</a>
+    </li>
+    <li>
+      <a href="#the-story" class="button">The Story</a>
+    </li>
+  </ul>
+</nav>

@@ -1,40 +1,12 @@
 ---
 import Logo from "../Logo/index.astro"
-
 import cx from "classnames"
-import styles from "./styles.module.css"
 
-const navItems = [
-  {
-    name: "What",
-    path: "#what",
-  },
-  {
-    name: "How",
-    path: "#how",
-  },
-  {
-    name: "Who",
-    path: "#who",
-  },
-]
+import styles from "./styles.module.css"
 ---
 
-<header class={cx(styles.header, "container--wide")}>
-  <a href="/" class={styles.logoWrapper}>
-    <span class="sr-only">Artifaction</span>
+<header class={cx(styles.header, "container section")}>
+  <div class={styles.logoWrapper}>
     <Logo />
-  </a>
-
-  <nav aria-label="Main">
-    <ul class={styles.navItems}>
-      {navItems.map(({ name, path }) => (
-        <li>
-          <a class={styles.navLink} href={path}>
-            {name}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+  </div>
 </header>
