@@ -21,6 +21,10 @@
   --font-base: clamp(1rem, 2.5vw, 1.125rem);
   --font-xl: clamp(3rem, 6vw, 4.5rem);
 
+  /* General */
+  --focus-outline-color: var(--color-primary);
+  --max-width-prose: 42rem;
+
   /* Easings (https://gist.github.com/argyleink/36e1c0153d2a783d513bd29c9f25aaf2) */
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
   --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
