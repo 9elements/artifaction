@@ -23,7 +23,6 @@
   z-index: calc(var(--index-grain) + 100);
   top: 0;
 
-  background-color: var(--color-bg);
   margin-block: 2rem 4rem;
 }
 
@@ -33,6 +32,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  background-color: var(--color-bg);
   gap: 0.5rem;
   grid-template-columns: 1fr 1fr;
   padding-block: 0.5rem;
@@ -44,6 +44,10 @@
 
   & :global(.button) {
     width: 100%;
+  }
+
+  & :global(.overlay) {
+    z-index: calc(var(--index-grain) + 1);
   }
 
   & li {
