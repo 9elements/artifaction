@@ -1,11 +1,10 @@
 ---
+import styles from "./styles.module.css"
 import { Icon } from "astro-icon"
 import cx from "classnames"
-
-import styles from "./styles.module.css"
 ---
 
-<footer class={cx(styles.footer, "container--full")}>
+<footer class={cx(styles.footer, "container")}>
   <p class={styles.copyright}>
     &copy; {new Date().getFullYear()} – Artifaction
   </p>

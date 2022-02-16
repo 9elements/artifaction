@@ -20,24 +20,25 @@
 
 .nav {
   position: sticky;
-  z-index: 1;
+  z-index: 1001;
   top: 0;
 
   background-color: var(--color-bg);
   margin-block: 2rem 4rem;
-  padding-block: 0.5rem;
 }
 
 .navItems {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   gap: 0.5rem;
   grid-template-columns: 1fr 1fr;
+  padding-block: 0.5rem;
   padding-inline: 0.5rem;
 
-  @media (--md) {
+  @media (--lg) {
     gap: 1rem;
   }
 

@@ -22,7 +22,7 @@
   transition: color var(--transition-duration) var(--ease-in-out-cubic);
   white-space: nowrap;
 
-  @media (--md) {
+  @media (--lg) {
     padding-inline: 1.5rem;
   }
 

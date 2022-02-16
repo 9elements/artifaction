@@ -16,7 +16,6 @@
   aspect-ratio: 1;
   background-color: var(--color-primary);
   color: var(--color-dark);
-  cursor: pointer;
   font-size: var(--font-base);
   gap: 0.6em;
   list-style-type: none;

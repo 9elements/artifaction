@@ -18,7 +18,17 @@
     url("/fonts/montserrat-v23-latin-700.woff2") format("woff2");
 }
 
-/* TT Travels Next */
+/* TT Travels Next Regular */
+@font-face {
+  font-display: swap;
+  font-family: "TT Travels Next";
+  font-style: normal;
+  font-weight: 400;
+  src: local("TT Travels Next"),
+    url("/fonts/tt-travels-next-regular.ttf") format("truetype");
+}
+
+/* TT Travels Next Bold */
 @font-face {
   font-display: swap;
   font-family: "TT Travels Next";

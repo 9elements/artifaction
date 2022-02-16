@@ -1,1 +1,45 @@
-<section></section>
+---
+import "aos/dist/aos.css"
+import styles from "./styles.module.css"
+
+import cx from "classnames"
+import Image from "../Image/index.astro"
+---
+
+<section class={cx("section container", styles.showcase)}>
+  <Image
+    src={Astro.resolve("./img/image_01.jpg")}
+    class={styles.image1}
+    data-aos="fade-up"
+  />
+  <span data-aos="fade-up" data-aos-delay="300" class={styles.text1}>
+    Pixel perfect
+  </span>
+  <span data-aos="fade-up" class={styles.text2}>prints</span>
+  <Image
+    src={Astro.resolve("./img/image_02.jpg")}
+    class={styles.image2}
+    data-aos="fade-up"
+  />
+  <Image
+    src={Astro.resolve("./img/image_03.jpg")}
+    class={styles.image3}
+    data-aos="fade-up"
+  />
+  <span data-aos="fade-up" data-aos-delay="300" class={styles.text3}>
+    and things
+  </span>
+  <Image
+    src={Astro.resolve("./img/image_04.jpg")}
+    class={styles.image4}
+    data-aos="fade-up"
+  />
+  <Image
+    src={Astro.resolve("./img/image_05.jpg")}
+    class={styles.image5}
+    data-aos="fade-up"
+  />
+  <span data-aos="fade-up" data-aos-delay="300" class={styles.text4}>
+    and NFTs
+  </span>
+</section>

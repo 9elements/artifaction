@@ -54,6 +54,8 @@ const hash = Math.random().toString().substring(2, 12)
     <Footer />
 
     <script src="./js/p5.min.js"></script>
+    <script src="./js/aos.js"></script>
+    <script>AOS.init() </script>
     <script src="./js/favicon.min.js"></script>
     <script>
       favicon.animate(
@@ -72,18 +74,3 @@ const hash = Math.random().toString().substring(2, 12)
     </script>
   </body>
 </html>
-
-<style>
-  .overlay {
-    position: fixed;
-    inset: 0;
-    user-select: none;
-    opacity: 0.5;
-    pointer-events: none;
-    background-image: url("../img/pixel-grain.png");
-    mix-blend-mode: multiply;
-    background-size: 22rem 30rem;
-    background-repeat: repeat;
-    z-index: 9999;
-  }
-</style>

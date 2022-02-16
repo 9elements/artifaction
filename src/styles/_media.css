@@ -1,3 +1,8 @@
-@custom-media --md (min-width: 48em);
+/* Restart the server after applying changes in this file */
+
+@custom-media --xs (min-width: 20em); /* 320px */
+@custom-media --s (min-width: 25em); /* 400px */
+@custom-media --md (min-width: 40em); /* 640px */
+@custom-media --lg (min-width: 48em); /* 768px */
 @custom-media --reduced-motion (prefers-reduced-motion: reduce);
 @custom-media --hover (hover: hover);
