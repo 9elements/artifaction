@@ -20,7 +20,7 @@
 
 .nav {
   position: sticky;
-  z-index: 1001;
+  z-index: calc(var(--index-grain) + 100);
   top: 0;
 
   background-color: var(--color-bg);
