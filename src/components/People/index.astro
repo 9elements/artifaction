@@ -1,37 +1,39 @@
 ---
 import { people } from "./people"
+import cx from "classnames"
 import styles from "./styles.module.css"
 ---
 
 <!-- TODO: Images with webp and avif -->
 
-<section class="container section">
-  <ul class={styles.grid}>
-    {people.map(({ name, jobTitle, twitter }) => (
-      <li class={styles.listItem}>
-        <div
-          class={styles.person}
-          itemscope
-          itemtype="https://schema.org/Person"
+<ul class={cx(styles.grid, "section")}>
+  {people.map(({ name, jobTitle, twitter }) => (
+    <li class={styles.person} itemscope itemtype="https://schema.org/Person">
+      <img
+        src="https://placekitten.com/400/400"
+        width="400"
+        height="400"
+        loading="lazy"
+        decoding="async"
+        alt=""
+        class={styles.portrait}
+      />
+      <h3 itemprop="name" class={styles.name}>
+        {name}
+      </h3>
+      <span itemprop="jobTitle" class={styles.jobTitle}>
+        {jobTitle}
+      </span>
+      {twitter && (
+        <a
+          itemprop="url"
+          href={`https://twitter.com/${twitter}`}
+          aria-label={`Follow ${name} on Twitter (@${twitter})`}
+          class={styles.twitter}
         >
-          <h3 itemprop="name" class={styles.name}>
-            {name}
-          </h3>
-          <span itemprop="jobTitle" class={styles.jobTitle}>
-            {jobTitle}
-          </span>
-          {twitter && (
-            <a
-              itemprop="url"
-              href={`https://twitter.com/${twitter}`}
-              aria-label={`Follow ${name} on Twitter (@${twitter})`}
-              class={styles.twitter}
-            >
-              @{twitter}
-            </a>
-          )}
-        </div>
-      </li>
-    ))}
-  </ul>
-</section>
+          @{twitter}
+        </a>
+      )}
+    </li>
+  ))}
+</ul>

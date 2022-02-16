@@ -1,26 +1,41 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-}
-
-.listItem {
-  padding: 0;
-  list-style-type: none;
+  padding-inline: 0;
 }
 
 .person {
   position: relative;
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
+  padding: 0;
+  padding: 1.5rem 0.75rem;
   aspect-ratio: 1;
   background-color: var(--color-primary);
   color: var(--color-dark);
+  cursor: pointer;
   font-size: var(--font-base);
   gap: 0.6em;
+  list-style-type: none;
   text-align: center;
+
+  &:hover,
+  &:focus-within {
+    & .portrait {
+      clip-path: polygon(0 0, 100% 0, 100% -10%, 0 0%);
+    }
+  }
+}
+
+.portrait {
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  inset: 0;
+  object-fit: cover;
+  transition: clip-path 0.35s var(--ease-in-out-cubic);
 }
 
 .name {

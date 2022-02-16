@@ -19,16 +19,31 @@
 }
 
 .nav {
-  padding-top: 2rem;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+
+  background-color: var(--color-bg);
+  margin-block: 2rem 4rem;
+  padding-block: 0.5rem;
 }
 
 .navItems {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  gap: 1rem;
+  gap: 0.5rem;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: 0.5rem;
+
+  @media (--md) {
+    gap: 1rem;
+  }
+
+  & :global(.button) {
+    width: 100%;
+  }
 
   & li {
     padding: 0;
