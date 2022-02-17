@@ -117,8 +117,10 @@
     }
 
     & .text3 {
+      align-self: center;
       grid-column: 7;
       grid-row: 5;
+      justify-self: center;
     }
 
     & .image4 {

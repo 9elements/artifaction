@@ -47,7 +47,7 @@ const hash = Math.random().toString().substring(2, 12)
   </head>
 
   <body>
-    <div aria-hidden class="overlay"></div>
+    <div aria-hidden="true" class="overlay"></div>
 
     <Header />
 
@@ -57,26 +57,9 @@ const hash = Math.random().toString().substring(2, 12)
 
     <script src="./js/p5.min.js"></script>
     <script src="./js/aos.js"></script>
-    <script>AOS.init() </script>
     <script src="./js/favicon.min.js"></script>
-    <script>
-      // Safari can't handle SVG favicons :(
-      // So only apply favicon animation in non-safari browsers
-      if (window.safari === undefined) {
-        favicon.animate(
-          [
-            "./favicons/favicon-frame-01.svg",
-            "./favicons/favicon-frame-02.svg",
-            "./favicons/favicon-frame-03.svg",
-            "./favicons/favicon-frame-04.svg",
-            "./favicons/favicon-frame-05.svg",
-            "./favicons/favicon-frame-06.svg",
-            "./favicons/favicon-frame-07.svg",
-            "./favicons/favicon-frame-08.svg",
-          ],
-          1100
-        )
-      }
-    </script>
+
+    <script src={Astro.resolve("../scripts/aos-init.js")}></script>
+    <script src={Astro.resolve("../scripts/favicon-animation.js")}></script>
   </body>
 </html>
