@@ -20,7 +20,7 @@
     "svgo": "^2.8.0"
   },
   "dependencies": {
-    "aos": "^2.3.4",
+    "aos": "^3.0.0-beta.6",
     "astro-icon": "^0.5.3",
     "classnames": "^2.3.1",
     "modern-normalize": "^1.1.0",
