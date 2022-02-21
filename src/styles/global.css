@@ -27,6 +27,8 @@ html {
 img,
 svg,
 iframe {
+  position: relative;
+  z-index: calc(var(--index-grain) + 10);
   max-width: 100%;
   height: auto;
 }

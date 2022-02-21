@@ -2,6 +2,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   padding-inline: 0;
+  row-gap: 0.5rem;
+
+  @media (--hover) {
+    row-gap: 0;
+  }
 }
 
 .person {
@@ -10,31 +15,44 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0;
-  padding: 1.5rem 0.75rem;
-  aspect-ratio: 1;
+  justify-content: start;
+  padding-bottom: 1rem;
   background-color: var(--color-primary);
   color: var(--color-dark);
   font-size: var(--font-base);
-  gap: 0.6em;
+  gap: 0.5em;
   list-style-type: none;
   text-align: center;
 
-  &:hover,
-  &:focus-within {
-    & .portrait {
-      clip-path: polygon(0 0, 100% 0, 100% -10%, 0 0%);
+  & :not(.portrait) {
+    padding-inline: 1rem;
+  }
+
+  @media (--hover) {
+    justify-content: center;
+    padding: 1.5rem 0.75rem;
+    aspect-ratio: 1;
+
+    &:hover,
+    &:focus-within {
+      & .portrait {
+        clip-path: polygon(0 0, 100% 0, 100% -10%, 0 0%);
+      }
     }
   }
 }
 
 .portrait {
-  position: absolute;
+  margin-bottom: 0.5rem;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  inset: 0;
   object-fit: cover;
   transition: clip-path 0.35s var(--ease-in-out-cubic);
+
+  @media (--hover) {
+    position: absolute;
+    margin-bottom: 0;
+    inset: 0;
+  }
 }
 
 .name {
