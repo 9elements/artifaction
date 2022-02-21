@@ -26,7 +26,8 @@ html {
 
 img,
 svg,
-iframe {
+iframe,
+video {
   position: relative;
   z-index: calc(var(--index-grain) + 10);
   max-width: 100%;

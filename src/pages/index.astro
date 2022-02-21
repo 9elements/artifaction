@@ -4,6 +4,9 @@ import Intro from "../components/Intro/index.astro"
 import VisualSection from "../components/VisualSection/index.astro"
 import Showcase from "../components/Showcase/index.astro"
 import People from "../components/People/index.astro"
+
+import cx from "classnames"
+import styles from "./index.module.css"
 ---
 
 <Layout>
@@ -28,11 +31,37 @@ import People from "../components/People/index.astro"
           smaller and finer elements repeating next to each other are creating a
           kind of digital glitch effects.
         </p>
-      </div>
 
-      <blockquote style="margin-top: 8rem; text-align: center;">
-        <code>[Animation Aufbau]</code>
-      </blockquote>
+        <video
+          class={cx(styles.video, "lazy")}
+          width="800"
+          height="800"
+          autoplay
+          loop
+          muted
+          data-src="./video/composition.mp4"
+          aria-label="An animated video showing the visual process of the algorithm"
+        >
+          <source type="video/mp4" data-src="./video/composition.mp4" />
+        </video>
+
+        <p>
+          A generative algorithm combines basic graphic shapes and pattern on a
+          square area of 8 by 8 equally sized fields, according to a
+          sophisticated scheme. Some elements occupy only one field, some have a
+          size of 2 x 2, 2 x 3, 4 x 4 etc.. This creates patterns that are
+          absolutely unique each time and there are endless possibilities. The
+          mixture of filled and transparent elements creates an almost
+          three-dimensional appearance. Sometimes it looks like you could walk
+          into the object and hide behind a corner. Sometimes some of the
+          smaller and finer elements repeating next to each other are creating a
+          kind of digital glitch effects.
+        </p>
+
+        <a href="https://github.com/9elements/artifaction">
+          View Project on GitHub
+        </a>
+      </div>
     </section>
 
     <Showcase />

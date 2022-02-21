@@ -38,7 +38,7 @@
 .prose {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 auto;
   gap: 1.5rem;
 
@@ -48,9 +48,12 @@
   }
 
   & :not(h1, h2, h3, h4) {
-    width: 100%;
     font-size: var(--font-base);
     line-height: 1.6;
+  }
+
+  & > a {
+    width: auto;
   }
 
   & h1,

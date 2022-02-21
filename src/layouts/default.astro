@@ -60,12 +60,20 @@ const hash = Math.random().toString().substring(2, 12)
 
     <Footer />
 
-    <!-- Already minified -->
     <script src="./js/p5.min.js"></script>
     <script src="./js/aos.min.js"></script>
+    <script src="./js/lazyload.min.js"></script>
     <script src="./js/favicon.min.js"></script>
 
-    <!-- Local scripts, minified in production via `Astro.resolve` -->
+    <script>
+      new LazyLoad({
+        elements_selector: ".lazy",
+        threshold: 0,
+        callback_load: function (element) {
+          element.classList.add("lazy-loaded")
+        },
+      })
+    </script>
     <script>
       AOS.init({
         offset: 200,
