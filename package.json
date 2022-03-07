@@ -20,6 +20,7 @@
     "svgo": "^2.8.0"
   },
   "dependencies": {
+    "@astrojs/renderer-react": "^0.5.0",
     "aos": "^3.0.0-beta.6",
     "astro-icon": "^0.5.3",
     "classnames": "^2.3.1",

@@ -136,6 +136,7 @@
 
     & .text4 {
       align-items: flex-end;
+      align-self: flex-end;
       padding-bottom: 0;
       grid-column: 6 / span 2;
       grid-row: 9 / span 2;

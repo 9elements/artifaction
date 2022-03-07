@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   padding-inline: 0;
-  row-gap: 0.5rem;
+  row-gap: 1rem;
 
   @media (--hover) {
     row-gap: 0;

@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/default.astro"
 import Intro from "../components/Intro/index.astro"
-import VisualSection from "../components/VisualSection/index.astro"
+import VisualSection from "../components/VisualSection"
 import Showcase from "../components/Showcase/index.astro"
 import People from "../components/People/index.astro"
 
@@ -13,7 +13,7 @@ import styles from "./index.module.css"
   <Intro />
 
   <main>
-    <VisualSection />
+    <VisualSection client:load />
 
     <section class="container section" id="how-it-works">
       <div class="prose">

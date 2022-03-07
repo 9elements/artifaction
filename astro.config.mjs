@@ -12,5 +12,5 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   ssr: {
     external: ["svgo"],
   },
-  renderers: [],
+  renderers: ["@astrojs/renderer-react"],
 })
