@@ -143,7 +143,7 @@ function Sketch() {
   }
 
   return (
-    <div>
+    <section className="container section">
       <div>
         <div style={{ height: 600 }}>
           <div id="sketchwrapper_merge"></div>
@@ -158,7 +158,7 @@ function Sketch() {
           How to mine
         </button>
       </div>
-    </div>
+    </section>
   )
 }
 
