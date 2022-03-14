@@ -20,10 +20,10 @@
 [class*="container"] {
   --max-width: 50rem;
   --padding-inline: 1rem;
-  width: 100%;
+
+  width: min(100% - calc(var(--padding-inline) * 2), var(--max-width));
   max-width: var(--max-width);
-  margin: 0 auto;
-  padding-inline: var(--padding-inline);
+  margin-inline: auto;
 }
 
 .container--wide {
