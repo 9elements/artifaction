@@ -21,7 +21,7 @@
   --max-width: 50rem;
   --padding-inline: 1rem;
 
-  width: min(100% - calc(var(--padding-inline) * 2), var(--max-width));
+  width: min(100% - var(--padding-inline) * 2, var(--max-width));
   max-width: var(--max-width);
   margin-inline: auto;
 }
