@@ -3,8 +3,8 @@ const { src, alt, width, height, lazy = true, ...props } = Astro.props
 ---
 
 <picture {...props}>
-  <source srcset={src.replace(".jpg", ".avif")} type="image/avif" />
-  <source srcset={src.replace(".jpg", ".webp")} type="image/webp" />
+  <source srcset={src?.replace(".jpg", ".avif")} type="image/avif" />
+  <source srcset={src?.replace(".jpg", ".webp")} type="image/webp" />
   <img
     {width}
     {height}
