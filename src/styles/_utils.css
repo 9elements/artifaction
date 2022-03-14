@@ -2,7 +2,7 @@
 .overlay {
   position: fixed;
   z-index: var(--index-grain);
-  background-image: url("/img/pixel-grain.png");
+  background-image: url("/images/pixel-grain.png");
   background-repeat: repeat;
   background-size: 22rem 30rem;
   inset: 0;
