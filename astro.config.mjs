@@ -13,4 +13,7 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
     external: ["svgo"],
   },
   renderers: ["@astrojs/renderer-react"],
+  buildOptions: {
+    site: "https://artifaction.netlify.app",
+  },
 })
