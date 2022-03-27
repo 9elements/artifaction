@@ -20,17 +20,13 @@ export class Blocks {
       [4, 4],
       [3, 3],
       [2, 2],
+      [2, 2],
+      [2, 2],
+      [2, 2]
     ]
-    this.clusters_dimensions = [
-      [3, 2],
-      [2, 3],
-      [3, 1],
-      [1, 3],
-    ]
-    // Probabilities of 4x4, 3x3, 2x2
-    this.probabilities = [5, 25, 75]
 
-    this.elementsInCat = [63, 41, 26]
+    // Probabilities of 4x4, 3x3, 2x2
+    this.probabilities = [90, 90, 100, 100, 100, 100]
 
     // Some empty arrays
     this.colors = []
@@ -40,7 +36,14 @@ export class Blocks {
     this.overlayGrid = Array(this.dimensions)
       .fill()
       .map(() => Array(this.dimensions).fill(-1))
-    this.images = [[], [], []]
+    
+    this.images = []
+    this.pipes = []
+    this.quarters = []
+    this.stripes = []
+    this.waves = []
+    this.flash = []
+
     this.blocks = []
     this.overlayBlocks = []
     this.overlayNumbers = []
@@ -86,31 +89,67 @@ export class Blocks {
 
   // Load SVGs
   loadSVGs() {
-    // Load all SVGs from the folder
-    for (let i = 0; i < 3; i++) {
-      let dirstr = "images/cat0{0}/cat0{0}".format(i)
-      for (let j = 0; j < this.elementsInCat[i]; j++) {
-        var z = j + 1
-        let str = dirstr + "-{0}.svg".format(z)
-        let SVGFile = this.p.loadSVG(str)
-        this.images[i].push(SVGFile)
-      }
+    // Load first set up images
+    for (let j = 0; j < 5; j++) {
+      var z = j + 1
+      let str = "images/images/{0}.svg".format(z)
+      let SVGFile = this.p.loadSVG(str)
+      this.images.push(SVGFile)
     }
+
+    // Wires
+    this.images.push(this.p.loadSVG("images/images/wire1.svg"))
+    this.images.push(this.p.loadSVG("images/images/wire2.svg"))
+
+    this.images.push(this.p.loadSVG("images/images/m-cat-01-12.svg"));
+    this.images.push(this.p.loadSVG("images/images/m-cat-02-12.svg"));
+    this.images.push(this.p.loadSVG("images/images/m-cat-02-19.svg"));
+    this.images.push(this.p.loadSVG("images/images/m-cat-02-90.svg"));
+    this.images.push(this.p.loadSVG("images/images/m-cat-02-97.svg"));
+    this.images.push(this.p.loadSVG("images/images/m-cat-03-46.svg"));
+
+    this.pipes.push(this.p.loadSVG("images/pipes/pipe1.svg"))
+    this.pipes.push(this.p.loadSVG("images/pipes/pipe2.svg"))
+    this.pipes.push(this.p.loadSVG("images/pipes/pipe3.svg"))
+    this.pipes.push(this.p.loadSVG("images/pipes/pipe4.svg"))
+
+    this.quarters.push(this.p.loadSVG("images/quarters/quarter1.svg"))
+    this.quarters.push(this.p.loadSVG("images/quarters/quarter2.svg"))
+    this.quarters.push(this.p.loadSVG("images/quarters/quarter3.svg"))
+    this.quarters.push(this.p.loadSVG("images/quarters/quarter4.svg"))
+
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe1.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe2.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe3.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe4.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe5.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe6.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe7.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe8.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe9.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe10.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe11.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe12.svg"))
+    this.stripes.push(this.p.loadSVG("images/stripes/stripe13.svg"))
+
+    this.waves.push(this.p.loadSVG("images/waves/wave1.svg"))
+    this.waves.push(this.p.loadSVG("images/waves/wave2.svg"))
+    this.waves.push(this.p.loadSVG("images/waves/wave3.svg"))
+    this.waves.push(this.p.loadSVG("images/waves/wave4.svg"))
+
   }
 
   // Artifacts Helper Functions
   calculateArtifacts() {
     var artifacts_num = 0
     // [4x4, 3x3, 2x2]
-    var artifacts = [0, 0, 0]
+    var artifacts = [0, 0, 0, 0, 0, 0]
 
-    while (artifacts_num < this.artifacts_min) {
-      for (let i = 0; i < artifacts.length; i++) {
-        let dice = this.getRandomInt(100)
-        if (dice <= this.probabilities[i]) {
-          artifacts[i]++
-          artifacts_num++
-        }
+    for (let i = 0; i < artifacts.length; i++) {
+      let dice = this.getRandomInt(100)
+      if (dice <= this.probabilities[i]) {
+        artifacts[i]++
+        artifacts_num++
       }
     }
 
@@ -363,7 +402,7 @@ export class Blocks {
     }
   }
 
-  generatePosition(width, height, imageNumber) {
+  generatePosition(width, height) {
     var x,
       y,
       tries = 0
@@ -375,14 +414,14 @@ export class Blocks {
       x = this.getRandomInt(this.dimensions - width)
       y = this.getRandomInt(this.dimensions - height)
       tries++
-      if (tries === 100) {
+      if (tries === 150) {
         return [false, null]
       }
     }
 
     // Create a Vector and fill the internal grid
     var v = this.p.createVector(x, y)
-    this.fillgrid(v, width, height, imageNumber, this.grid)
+    this.fillgrid(v, width, height, 1, this.grid)
 
     return [true, v]
   }
@@ -421,6 +460,7 @@ export class Blocks {
     // Load SVGs and Colors
     this.loadBackgroundForegroundSimplePairs()
     this.loadSVGs()
+    console.log("Init done.")
   }
 
   setSVGId(id) {
@@ -432,6 +472,10 @@ export class Blocks {
   }
 
   Genesis() {
+    // The Genesis code is structured into three parts. First part
+    // is to generate the bigger background layer. Second part layers
+    // 1x1 tiles on top - but only partially. Third layer puts alpha
+    // path on top to make it look more fluent.
     this.setSVGId("Layer1")
     var r = this.getRandomInt(this.colors.length - 1)
     this.colorScheme = r
@@ -440,105 +484,56 @@ export class Blocks {
     this.p.background(this.colors[this.colorScheme][0])
     let foregroundColor = this.colors[this.colorScheme][1]
 
-    //
-    var artifacts = this.calculateArtifacts()
-
-    // Big Artifacts
-    for (let i = 0; i < artifacts.length; i++) {
-      for (let j = 0; j < artifacts[i]; j++) {
-        let category = i == 2 ? 0 : 2 // FIXME
-
-        r = this.getRandomInt(this.images[category].length - 1)
-        let imageValue = (category << 6) | (r & 0x3f)
-
-        var vector = this.generatePosition(
-          this.artifacts_dimensions[i][0],
-          this.artifacts_dimensions[i][1],
-          imageValue
-        )
-        if (vector[0]) {
-          this.blocks.push(
-            new Block(
-              this.p,
-              vector[1],
-              this.artifacts_dimensions[i][0],
-              this.artifacts_dimensions[i][1],
-              this.resolution,
-              foregroundColor,
-              this.images[category][r]
-            )
-          )
-        }
-      }
-    }
-    // Clusters
-    let clusters_amount = this.getRandomInt(3)
-    console.log("Generating ", clusters_amount, "clusters")
-    for (let i = 0; i < clusters_amount; i++) {
-      let clusterType = this.getRandomInt(1)
-
-      let category = 1
-      r = this.getRandomInt(this.images[category].length - 1)
-      let imageValue = (category << 6) | (r & 0x3f)
-
-      var vector = this.generatePosition(
-        this.clusters_dimensions[clusterType][0],
-        this.clusters_dimensions[clusterType][1],
-        imageValue
+    console.log(this.stripes)
+    // Generate a background image [TODO: This is fixed for now]
+    var vector = this.generatePosition(
+      this.dimensions,
+      this.dimensions
+    )
+    this.blocks.push(
+      new Block(
+        this.p,
+        vector[1],
+        this.dimensions,
+        this.dimensions,
+        this.resolution,
+        foregroundColor,
+        this.stripes[8],
+        1
       )
+    )
 
-      if (vector[0]) {
-        // Instead of adding one vector, we do add multiple vectors
-        for (
-          let i = vector[1].x;
-          i < vector[1].x + this.clusters_dimensions[clusterType][0];
-          i++
-        ) {
-          for (
-            let j = vector[1].y;
-            j < vector[1].y + this.clusters_dimensions[clusterType][1];
-            j++
-          ) {
-            this.blocks.push(
-              new Block(
-                this.p,
-                this.p.createVector(i, j),
-                1,
-                1,
-                this.resolution,
-                foregroundColor,
-                this.images[category][r]
-              )
-            )
-          }
-        }
-      }
-    }
+    // var artifacts = this.calculateArtifacts()
 
-    for (let i = 0; i < this.grid.length; i++) {
-      for (let j = 0; j < this.grid[i].length; j++) {
-        if (this.grid[i][j] === -1) {
-          let category = 0
-          r = this.getRandomInt(this.images[category].length - 1)
-          let imageValue = (category << 6) | (r & 0x3f)
-          this.grid[i][j] = imageValue
-          this.blocks.push(
-            new Block(
-              this.p,
-              this.p.createVector(i, j),
-              1,
-              1,
-              this.resolution,
-              foregroundColor,
-              this.images[category][r]
-            )
-          )
-        }
-      }
-    }
+    // // Big Artifacts
+    // for (let i = 0; i < artifacts.length; i++) {
+    //   for (let j = 0; j < artifacts[i]; j++) {
 
+    //     var vector = this.generatePosition(
+    //       this.artifacts_dimensions[i][0],
+    //       this.artifacts_dimensions[i][1]
+    //     )
+    //     if (vector[0]) {
+    //       let r = this.getRandomInt(this.images.length - 1)
+    //       this.blocks.push(
+    //         new Block(
+    //           this.p,
+    //           vector[1],
+    //           this.artifacts_dimensions[i][0],
+    //           this.artifacts_dimensions[i][1],
+    //           this.resolution,
+    //           foregroundColor,
+    //           this.images[category][r],
+    //           1
+    //         )
+    //       )
+    //     }
+    //   }
+    // }
+    
     //draw
     for (let i = 0; i < this.blocks.length; i++) {
+      console.log("Draw Block %d", i)
       this.blocks[i].draw()
     }
 

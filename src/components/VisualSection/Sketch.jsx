@@ -5,9 +5,8 @@ import { Blocks } from "./Blocks"
 
 const canvasSize = 380
 const dimensions = 8
-var BlocksNFTLeft
-var BlocksNFTRight
-var BlocksNFTMerge
+
+var BlocksNFT
 
 /*
  * CleanUp
@@ -40,54 +39,23 @@ function SetUp(wrappername, containername) {
  * core functionality
  */
 function Sketch() {
-  async function generateBlocksLeft() {
+
+  async function generateBlocks() {
     // Init
-    CleanUp("sketchcontainer_left")
-    SetUp("sketchwrapper_left", "sketchcontainer_left")
+    CleanUp("sketchcontainer")
+    SetUp("sketchwrapper", "sketchcontainer")
 
     let sketch = function (p) {
       let resolution = canvasSize / dimensions
-      BlocksNFTLeft = new Blocks(p, dimensions, resolution)
+      BlocksNFT = new Blocks(p, dimensions, resolution)
 
       p.setup = function () {
         p.createCanvas(
-          canvasSize + resolution * 4,
-          canvasSize + resolution * 4,
+          canvasSize + (resolution * 4),
+          canvasSize + (resolution * 4),
           p.SVG
         )
-
-        BlocksNFTLeft.Genesis()
-        p.noLoop()
-      }
-
-      p.draw = function () {
-        // do nothing
-      }
-
-      p.preload = function () {
-        BlocksNFTLeft.Init()
-      }
-    }
-    new p5(sketch, "sketchcontainer_left")
-  }
-
-  async function generateBlocksRight() {
-    // Init
-    CleanUp("sketchcontainer_right")
-    SetUp("sketchwrapper_right", "sketchcontainer_right")
-
-    let sketch = function (p) {
-      let resolution = canvasSize / dimensions
-      BlocksNFTRight = new Blocks(p, dimensions, resolution)
-
-      p.setup = function () {
-        p.createCanvas(
-          canvasSize + resolution * 4,
-          canvasSize + resolution * 4,
-          p.SVG
-        )
-
-        BlocksNFTRight.Genesis()
+        BlocksNFT.Genesis()
         p.noLoop()
       }
 
@@ -95,66 +63,28 @@ function Sketch() {
         // Do nothing.
       }
 
-      p.preload = function () {
-        BlocksNFTRight.Init()
+      p.preload = function() {
+        BlocksNFT.Init()
       }
+
     }
-    new p5(sketch, "sketchcontainer_right")
-  }
-
-  async function mergeBlocks() {
-    if (BlocksNFTLeft && BlocksNFTRight) {
-      // Init
-      CleanUp("sketchcontainer_merge")
-      SetUp("sketchwrapper_merge", "sketchcontainer_merge")
-
-      let configurationLeft = BlocksNFTLeft.GetConfiguration()
-      console.log({ configurationLeft })
-      let configurationRight = BlocksNFTRight.GetConfiguration()
-      console.log({ configurationRight })
-
-      configurationLeft.overlayGrid = configurationRight.grid
-      configurationLeft.overlayColorScheme = configurationRight.colorScheme
-
-      let sketch = function (p) {
-        let resolution = canvasSize / dimensions
-        BlocksNFTMerge = new Blocks(p, dimensions, resolution)
-
-        p.setup = function () {
-          p.createCanvas(
-            canvasSize + resolution * 4,
-            canvasSize + resolution * 4,
-            p.SVG
-          )
-
-          BlocksNFTMerge.LoadFromConfiguration(configurationLeft)
-        }
-
-        p.draw = function () {
-          // Do nothing.
-        }
-
-        p.preload = function () {
-          BlocksNFTMerge.Init()
-        }
-      }
-      new p5(sketch, "sketchcontainer_merge")
-    }
+    console.log("new p5")
+    new p5(sketch, "sketchcontainer")
   }
 
   return (
     <section className="container section">
       <div>
         <div style={{ height: 600 }}>
-          <div id="sketchwrapper_merge"></div>
+          <div id="sketchwrapper"></div>
         </div>
       </div>
       <div className={styles.buttons}>
-        <button className="button" onClick={mergeBlocks}>
+        <button className="button" onClick={generateBlocks}>
           Generate
         </button>
         <button className="button">Connect Metamask</button>
-        <button className="button" onClick={mergeBlocks}>
+        <button className="button" onClick={generateBlocks}>
           How to mine
         </button>
       </div>
