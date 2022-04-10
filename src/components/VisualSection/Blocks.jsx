@@ -30,6 +30,7 @@ export class Blocks {
 
     // Some empty arrays
     this.colors = []
+    this.baseImage = 0
     this.grid = Array(this.dimensions)
       .fill()
       .map(() => Array(this.dimensions).fill(-1))
@@ -38,12 +39,9 @@ export class Blocks {
       .map(() => Array(this.dimensions).fill(-1))
     
     this.images = []
-    this.pipes = []
-    this.quarters = []
-    this.stripes = []
-    this.waves = []
-    this.flash = []
+    this.backgroundImages = []
 
+    this.background = null;
     this.blocks = []
     this.overlayBlocks = []
     this.overlayNumbers = []
@@ -108,34 +106,13 @@ export class Blocks {
     this.images.push(this.p.loadSVG("images/images/m-cat-02-97.svg"));
     this.images.push(this.p.loadSVG("images/images/m-cat-03-46.svg"));
 
-    this.pipes.push(this.p.loadSVG("images/pipes/pipe1.svg"))
-    this.pipes.push(this.p.loadSVG("images/pipes/pipe2.svg"))
-    this.pipes.push(this.p.loadSVG("images/pipes/pipe3.svg"))
-    this.pipes.push(this.p.loadSVG("images/pipes/pipe4.svg"))
-
-    this.quarters.push(this.p.loadSVG("images/quarters/quarter1.svg"))
-    this.quarters.push(this.p.loadSVG("images/quarters/quarter2.svg"))
-    this.quarters.push(this.p.loadSVG("images/quarters/quarter3.svg"))
-    this.quarters.push(this.p.loadSVG("images/quarters/quarter4.svg"))
-
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe1.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe2.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe3.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe4.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe5.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe6.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe7.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe8.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe9.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe10.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe11.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe12.svg"))
-    this.stripes.push(this.p.loadSVG("images/stripes/stripe13.svg"))
-
-    this.waves.push(this.p.loadSVG("images/waves/wave1.svg"))
-    this.waves.push(this.p.loadSVG("images/waves/wave2.svg"))
-    this.waves.push(this.p.loadSVG("images/waves/wave3.svg"))
-    this.waves.push(this.p.loadSVG("images/waves/wave4.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash1.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash2.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash3.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash4.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash5.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash6.svg"))
+    this.backgroundImages.push(this.p.loadSVG("images/flash/flash7.svg"))
 
   }
 
@@ -154,193 +131,6 @@ export class Blocks {
     }
 
     return artifacts
-  }
-
-  findBigArtifacts(externalGrid, internalGrid, secondLayer, drawArray) {
-    var color = this.colorScheme
-
-    for (let i = 0; i < externalGrid.length; i++) {
-      var lastNumber
-      var dimension = 1
-      for (let j = 0; j < externalGrid[i].length; j++) {
-        if (!lastNumber) {
-          // No Check here
-          lastNumber = externalGrid[i][j]
-          continue
-        }
-
-        if (internalGrid[i][j - 1] !== -1) {
-          lastNumber = externalGrid[i][j]
-          continue
-        }
-
-        if (lastNumber === externalGrid[i][j]) {
-          dimension++
-        }
-
-        if (
-          lastNumber !== externalGrid[i][j] &&
-          dimension > 1 &&
-          i + dimension <= this.dimensions
-        ) {
-          // We might found an artifact
-          let y = j - dimension
-
-          if (dimension > 4) {
-            dimension = 4
-          }
-
-          if (
-            this.checkForValidArtifact(
-              externalGrid,
-              i,
-              y,
-              dimension,
-              lastNumber
-            )
-          ) {
-            if (secondLayer) {
-              if (this.collisionCheck(this.grid, i, y, dimension, dimension)) {
-                dimension = 1
-                lastNumber = externalGrid[i][j]
-                continue
-              }
-            }
-
-            // Generate Vector
-            let v = this.p.createVector(i, y)
-            this.fillgrid(v, dimension, dimension, lastNumber, internalGrid)
-
-            let category = lastNumber >> 6
-            let imageNumber = lastNumber & 0x3f
-
-            drawArray.push(
-              new Block(
-                this.p,
-                v,
-                dimension,
-                dimension,
-                this.resolution,
-                this.colors[color][1],
-                this.images[category][imageNumber]
-              )
-            )
-          }
-          dimension = 1
-        }
-
-        lastNumber = externalGrid[i][j]
-      }
-      if (dimension > 1 && i + dimension <= this.dimensions) {
-        // We might found an artifact
-        let y = this.dimensions - dimension
-
-        if (
-          this.checkForValidArtifact(externalGrid, i, y, dimension, lastNumber)
-        ) {
-          // Generate Vector
-          let v = this.p.createVector(i, y)
-          this.fillgrid(v, dimension, dimension, lastNumber, internalGrid)
-
-          let category = lastNumber >> 6
-          let imageNumber = lastNumber & 0x3f
-
-          drawArray.push(
-            new Block(
-              this.p,
-              v,
-              dimension,
-              dimension,
-              this.resolution,
-              this.colors[color][1],
-              this.images[category][imageNumber]
-            )
-          )
-        }
-      }
-    }
-  }
-
-  renderSmallArtifacts(externalGrid, internalGrid, secondLayer, drawArray) {
-    var color = this.colorScheme
-
-    var dimension = 1
-
-    //Now we need to choose some numbers upfront which we do _not_ render
-    if (!secondLayer) {
-      for (let i = 0; i < internalGrid.length; i++) {
-        for (let j = 0; j < internalGrid[i].length; j++) {
-          if (
-            !this.collisionCheck(this.grid, i, j, dimension, dimension) &&
-            !this.collisionCheck(this.overlayGrid, i, j, dimension, dimension)
-          ) {
-            // If grid is not rendered yet
-            internalGrid[i][j] = externalGrid[i][j]
-
-            // Skip every 5th tile
-            let counter = i * internalGrid.length + j + (i % 2)
-            if (counter % 5 == 0) {
-              this.overlayNumbers.push([i, j])
-              continue
-            }
-            // Generate Vector
-            let v = this.p.createVector(i, j)
-
-            let category = externalGrid[i][j] >> 6
-            let imageNumber = externalGrid[i][j] & 0x3f
-
-            drawArray.push(
-              new Block(
-                this.p,
-                v,
-                dimension,
-                dimension,
-                this.resolution,
-                this.colors[color][1],
-                this.images[category][imageNumber]
-              )
-            )
-          }
-        }
-      }
-    } else {
-      // Render only the tiles from list.
-      for (let i = 0; i < this.overlayNumbers.length; i++) {
-        var x = this.overlayNumbers[i][0]
-        var y = this.overlayNumbers[i][1]
-        if (internalGrid[x][y] == -1) {
-          // If grid is not rendered yet
-          internalGrid[x][y] = externalGrid[x][y]
-
-          // Generate Vector
-          let v = this.p.createVector(x, y)
-
-          let category = externalGrid[x][y] >> 6
-          let imageNumber = externalGrid[x][y] & 0x3f
-
-          drawArray.push(
-            new Block(
-              this.p,
-              v,
-              dimension,
-              dimension,
-              this.resolution,
-              this.colors[color][1],
-              this.images[category][imageNumber]
-            )
-          )
-        }
-      }
-
-      // Copy all remaining over.
-      for (let i = 0; i < internalGrid.length; i++) {
-        for (let j = 0; j < internalGrid[i].length; j++) {
-          if (internalGrid[i][j] === -1) {
-            internalGrid[i][j] = externalGrid[i][j]
-          }
-        }
-      }
-    }
   }
 
   drawBlocks(drawArray) {
@@ -402,7 +192,7 @@ export class Blocks {
     }
   }
 
-  generatePosition(width, height) {
+  generatePosition(grid, width, height) {
     var x,
       y,
       tries = 0
@@ -410,7 +200,7 @@ export class Blocks {
     x = this.getRandomInt(this.dimensions - width)
     y = this.getRandomInt(this.dimensions - height)
 
-    while (this.collisionCheck(this.grid, x, y, width, height)) {
+    while (this.collisionCheck(grid, x, y, width, height)) {
       x = this.getRandomInt(this.dimensions - width)
       y = this.getRandomInt(this.dimensions - height)
       tries++
@@ -421,7 +211,7 @@ export class Blocks {
 
     // Create a Vector and fill the internal grid
     var v = this.p.createVector(x, y)
-    this.fillgrid(v, width, height, 1, this.grid)
+    this.fillgrid(v, width, height, 1, grid)
 
     return [true, v]
   }
@@ -460,22 +250,32 @@ export class Blocks {
     // Load SVGs and Colors
     this.loadBackgroundForegroundSimplePairs()
     this.loadSVGs()
-    console.log("Init done.")
   }
 
   setSVGId(id) {
+    for (let j = 0; j < this.backgroundImages.length; j++) {
+      this.backgroundImages[j].elt.setAttribute("id", id)
+    }
     for (let j = 0; j < this.images.length; j++) {
-      for (let i = 0; i < this.images[j].length; i++) {
-        this.images[j][i].elt.setAttribute("id", id)
-      }
+      this.images[j].elt.setAttribute("id", id)
     }
   }
 
   Genesis() {
-    // The Genesis code is structured into three parts. First part
-    // is to generate the bigger background layer. Second part layers
-    // 1x1 tiles on top - but only partially. Third layer puts alpha
-    // path on top to make it look more fluent.
+    // The Genesis code is structured into multiple parts.
+    // Stage 1:
+    // Generate the bigger background layer.
+    // 
+    // Stage 2:
+    // 1x1 tiles on top - but only partially.
+    //
+    // Stage 3:
+    // Bigger artifacts - Partially not rendered. Stage 3 could be swapped with Stage 2
+    //
+    // Stage 4:
+    // Alpha channels on top
+
+    // Stage 1
     this.setSVGId("Layer1")
     var r = this.getRandomInt(this.colors.length - 1)
     this.colorScheme = r
@@ -483,27 +283,54 @@ export class Blocks {
     // set Background and Foreground Color
     this.p.background(this.colors[this.colorScheme][0])
     let foregroundColor = this.colors[this.colorScheme][1]
-
-    console.log(this.stripes)
+    console.log(this.images)
+    
     // Generate a background image [TODO: This is fixed for now]
     var vector = this.generatePosition(
+      this.grid,
       this.dimensions,
       this.dimensions
     )
-    this.blocks.push(
-      new Block(
-        this.p,
-        vector[1],
-        this.dimensions,
-        this.dimensions,
-        this.resolution,
-        foregroundColor,
-        this.stripes[8],
+    this.background = new Block(this.p,
+                                vector[1],
+                                this.dimensions,
+                                this.dimensions,
+                                this.resolution,
+                                foregroundColor,
+                                this.backgroundImages[0],
+                                1)
+
+    this.background.draw(0.6)
+
+    // Stage 2
+    this.setSVGId("Layer2")
+    while (r == this.colorScheme) {
+      r = this.getRandomInt(this.colors.length - 1)
+      this.overlayColorScheme = r
+    }
+
+    for (let i = 0; i < (this.dimensions * this.dimensions); i++) {
+      vector = this.generatePosition(
+        this.overlayGrid,
+        1,
         1
       )
-    )
-
-    // var artifacts = this.calculateArtifacts()
+      let randomImage = this.p.min(this.getRandomInt(this.images.length), this.images.length - 1)
+      if (vector[0]) {
+        this.blocks.push(
+          new Block(
+            this.p,
+            vector[1],
+            1,
+            1,
+            this.resolution,
+            foregroundColor,
+            this.images[randomImage],
+            1)
+        )
+      }
+    }
+    
 
     // // Big Artifacts
     // for (let i = 0; i < artifacts.length; i++) {
@@ -530,96 +357,16 @@ export class Blocks {
     //     }
     //   }
     // }
-    
+
     //draw
     for (let i = 0; i < this.blocks.length; i++) {
-      console.log("Draw Block %d", i)
-      this.blocks[i].draw()
+      if (Math.random() < 0.6) {
+        this.blocks[i].draw(0, 0, this.overlayColorScheme)
+      }
     }
 
-    this.colorize(foregroundColor)
+    this.colorize()
     console.log(this)
   }
 
-  LoadFromConfiguration(configuration) {
-    console.log(configuration)
-    // Do some prep to load from a config
-    // Set up grid properly
-    var externalConfiguration = configuration
-    this.colorScheme = externalConfiguration.colorScheme
-    if (this.colorScheme === externalConfiguration.overlayColorScheme) {
-      this.overlayColorScheme = this.colorScheme + 1
-    } else {
-      this.overlayColorScheme = externalConfiguration.overlayColorScheme
-    }
-    this.blocks = []
-    this.overlayBlocks = []
-    this.grid = Array(this.dimensions)
-      .fill()
-      .map(() => Array(this.dimensions).fill(-1))
-    this.overlayGrid = Array(this.dimensions)
-      .fill()
-      .map(() => Array(this.dimensions).fill(-1))
-
-    // Set Background first
-    this.p.background(this.colors[this.colorScheme][0])
-
-    // Draw the big artifacts first
-    this.setSVGId("Layer1")
-    this.findBigArtifacts(
-      externalConfiguration.grid,
-      this.grid,
-      false,
-      this.blocks
-    )
-    this.drawBlocks(this.blocks)
-
-    if (externalConfiguration.overlayGrid[0][0] !== -1) {
-      // Print Overlay
-      this.setSVGId("Layer2")
-      this.findBigArtifacts(
-        externalConfiguration.overlayGrid,
-        this.overlayGrid,
-        true,
-        this.overlayBlocks
-      )
-      this.drawBlocks(this.overlayBlocks)
-    }
-
-    this.blocks = []
-    this.overlayBlocks = []
-
-    this.setSVGId("Layer1")
-    this.renderSmallArtifacts(
-      externalConfiguration.grid,
-      this.grid,
-      false,
-      this.blocks
-    )
-    this.drawBlocks(this.blocks)
-
-    this.setSVGId("Layer2")
-    this.renderSmallArtifacts(
-      externalConfiguration.overlayGrid,
-      this.overlayGrid,
-      true,
-      this.overlayBlocks
-    )
-    this.drawBlocks(this.overlayBlocks)
-
-    this.colorize()
-  }
-
-  GetConfiguration() {
-    return {
-      grid: this.grid,
-      overlayGrid: this.overlayGrid,
-      colorScheme: this.colorScheme,
-      overlayColorScheme: this.overlayColorScheme,
-    }
-  }
-
-  lifeSign() {
-    console.log("Showing a sign of life")
-  }
 }
