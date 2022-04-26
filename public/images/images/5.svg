@@ -1,40 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 113.4 113.4" style="enable-background:new 0 0 113.4 113.4;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#1E1E1C;}
-	.st1{fill:#6702FF;}
-	.st2{fill:#AAD9DE;}
-	.st3{fill:#1D1D1B;}
-	.st4{fill:#FFFFFF;}
-	.st5{fill:none;stroke:#000000;stroke-width:5.1821;stroke-miterlimit:10;}
-	.st6{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:5.1821;stroke-miterlimit:10;}
-	.st7{fill:#020206;}
-	.st8{fill:#E20613;}
-	.st9{fill:#BDFF9A;}
-	.st10{fill:#FF56FF;}
-	.st11{fill:#941B80;}
-	.st12{fill:#00A099;}
-	.st13{fill:#DDDB00;}
-	.st14{fill:#35A8E0;}
-	.st15{fill:#FFFFFF;stroke:#E20613;stroke-width:10;stroke-miterlimit:10;}
-	.st16{fill:#575756;}
-	.st17{fill:#868686;}
-	.st18{fill:#E9E9EB;}
-</style>
-<g>
-	<path d="M2.8,98.9L17,113.1H2.8V98.9z"/>
-	<path d="M2.8,84.7l28.3,28.3h14.2L2.8,70.5V84.7z"/>
-	<path d="M59.5,113.1L2.8,56.4H17l56.7,56.7H59.5z"/>
-	<path d="M87.9,113.1L31.2,56.4h14.2l56.7,56.7H87.9z"/>
-	<path d="M116.2,113.1L59.5,56.4h14.2l42.5,42.5V113.1z"/>
-	<path d="M116.2,84.7L87.9,56.4H102l14.2,14.2V84.7z"/>
-	<path d="M2.8,42.2L17,56.4H2.8V42.2z"/>
-	<path d="M2.8,28l28.3,28.3h14.2L2.8,13.9V28z"/>
-	<path d="M59.5,56.4L2.8-0.3H17l56.7,56.7H59.5z"/>
-	<path d="M87.9,56.4L31.2-0.3h14.2L102,56.4H87.9z"/>
-	<path d="M116.2,56.4L59.5-0.3h14.2l42.5,42.5V56.4z"/>
-	<path d="M116.2,28L87.9-0.3H102l14.2,14.2V28z"/>
-</g>
+<svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.40283 50.7087L6.40283 100.7H12.6554L12.6554 50.7087H6.40283Z" fill="black"/>
+<path d="M18.8994 50.7087L18.8994 100.7H25.152L25.152 50.7087H18.8994Z" fill="black"/>
+<path d="M31.4048 50.7088L31.4048 100.699H37.6574V50.7088H31.4048Z" fill="black"/>
+<path d="M43.9019 50.7091V100.7H50.1545V50.7091H43.9019Z" fill="black"/>
+<path d="M56.3984 50.7091V100.7H62.651V50.7091H56.3984Z" fill="black"/>
+<path d="M68.9043 50.7085V100.7H75.1569V50.7085H68.9043Z" fill="black"/>
+<path d="M81.4009 50.7087V100.7H87.6535V50.7087H81.4009Z" fill="black"/>
+<path d="M93.8975 50.7087V100.7H100.15V50.7087H93.8975Z" fill="black"/>
+<path d="M0.149902 0.708878L0.149902 50.709H6.40273L6.40273 0.708878H0.149902Z" fill="black"/>
+<path d="M12.6465 0.700089L12.6465 50.7002H18.8993L18.8993 0.700089H12.6465Z" fill="black"/>
+<path d="M25.1431 0.709007L25.1431 50.7083H31.3959L31.3959 0.709007H25.1431Z" fill="black"/>
+<path d="M37.6489 0.709251V50.7085H43.9018V0.709251H37.6489Z" fill="black"/>
+<path d="M50.1455 0.709251V50.7085H56.3983V0.709251H50.1455Z" fill="black"/>
+<path d="M62.6421 0.708633V50.7087H68.8949V0.708633H62.6421Z" fill="black"/>
+<path d="M75.1475 0.708878V50.709H81.4003V0.708878H75.1475Z" fill="black"/>
+<path d="M87.644 0.708878V50.709H93.8969V0.708878H87.644Z" fill="black"/>
 </svg>

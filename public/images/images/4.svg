@@ -1,48 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 113.4 113.4" style="enable-background:new 0 0 113.4 113.4;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#1E1E1C;}
-	.st1{fill:#6702FF;}
-	.st2{fill:#AAD9DE;}
-	.st3{fill:#1D1D1B;}
-	.st4{fill:#FFFFFF;}
-	.st5{fill:none;stroke:#000000;stroke-width:5.1821;stroke-miterlimit:10;}
-	.st6{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:5.1821;stroke-miterlimit:10;}
-	.st7{fill:#020206;}
-	.st8{fill:#E20613;}
-	.st9{fill:#BDFF9A;}
-	.st10{fill:#FF56FF;}
-	.st11{fill:#941B80;}
-	.st12{fill:#00A099;}
-	.st13{fill:#DDDB00;}
-	.st14{fill:#35A8E0;}
-	.st15{fill:#FFFFFF;stroke:#E20613;stroke-width:10;stroke-miterlimit:10;}
-	.st16{fill:#575756;}
-	.st17{fill:#868686;}
-	.st18{fill:#E9E9EB;}
-</style>
-<g>
-	<g>
-		<rect x="-14.9" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -71.5744 98.5019)" width="56.7" height="7.1"/>
-		<rect x="-0.7" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -57.4012 112.6751)" width="56.7" height="7.1"/>
-		<rect x="13.5" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -43.2279 126.8483)" width="56.7" height="7.1"/>
-		<rect x="27.6" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -29.0547 141.0215)" width="56.7" height="7.1"/>
-		<rect x="41.8" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -14.8815 155.1948)" width="56.7" height="7.1"/>
-		<rect x="56" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -0.7082 169.368)" width="56.7" height="7.1"/>
-		<rect x="70.2" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 13.465 183.5412)" width="56.7" height="7.1"/>
-		<rect x="84.3" y="81.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 27.6382 197.7145)" width="56.7" height="7.1"/>
-	</g>
-	<g>
-		<rect x="-22" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -21.9681 34.7223)" width="56.7" height="7.1"/>
-		<rect x="-7.8" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -7.7949 48.8956)" width="56.7" height="7.1"/>
-		<rect x="6.4" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 6.3784 63.0688)" width="56.7" height="7.1"/>
-		<rect x="20.5" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 20.5516 77.242)" width="56.7" height="7.1"/>
-		<rect x="34.7" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 34.7248 91.4152)" width="56.7" height="7.1"/>
-		<rect x="48.9" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 48.8981 105.5885)" width="56.7" height="7.1"/>
-		<rect x="63.1" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 63.0713 119.7617)" width="56.7" height="7.1"/>
-		<rect x="77.2" y="24.8" transform="matrix(6.123234e-17 -1 1 6.123234e-17 77.2445 133.9349)" width="56.7" height="7.1"/>
-	</g>
-</g>
+<svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M50.9155 6.96289H0.919922V13.2155H50.9155V6.96289Z" fill="black"/>
+<path d="M50.9155 19.4595H0.919922V25.7123H50.9155V19.4595Z" fill="black"/>
+<path d="M50.9155 31.9648H0.919922V38.2177H50.9155V31.9648Z" fill="black"/>
+<path d="M50.9155 44.4617H0.919922V50.7143H50.9155V44.4617Z" fill="black"/>
+<path d="M50.9155 56.9583H0.919922V63.2111H50.9155V56.9583Z" fill="black"/>
+<path d="M50.9155 69.4639H0.919922V75.7167H50.9155V69.4639Z" fill="black"/>
+<path d="M50.9155 81.9607H0.919922V88.2133H50.9155V81.9607Z" fill="black"/>
+<path d="M50.9155 94.4573H0.919922V100.71H50.9155V94.4573Z" fill="black"/>
+<path d="M100.92 0.709961H50.9155V6.9628H100.92V0.709961Z" fill="black"/>
+<path d="M100.92 13.2153H50.9155V19.4682H100.92V13.2153Z" fill="black"/>
+<path d="M100.92 25.7122H50.9155V31.9648H100.92V25.7122Z" fill="black"/>
+<path d="M100.92 38.209H50.9155V44.4618H100.92V38.209Z" fill="black"/>
+<path d="M100.92 50.7144H50.9155V56.9672H100.92V50.7144Z" fill="black"/>
+<path d="M100.92 63.2112H50.9155V69.4638H100.92V63.2112Z" fill="black"/>
+<path d="M100.92 75.7078H50.9155V81.9606H100.92V75.7078Z" fill="black"/>
+<path d="M100.92 88.2134H50.9155V94.4662H100.92V88.2134Z" fill="black"/>
 </svg>

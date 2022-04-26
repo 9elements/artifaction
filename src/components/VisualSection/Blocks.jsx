@@ -88,31 +88,19 @@ export class Blocks {
   // Load SVGs
   loadSVGs() {
     // Load first set up images
-    for (let j = 0; j < 5; j++) {
+    for (let j = 0; j < 14; j++) {
       var z = j + 1
       let str = "images/images/{0}.svg".format(z)
       let SVGFile = this.p.loadSVG(str)
       this.images.push(SVGFile)
     }
 
-    // Wires
-    this.images.push(this.p.loadSVG("images/images/wire1.svg"))
-    this.images.push(this.p.loadSVG("images/images/wire2.svg"))
-
-    this.images.push(this.p.loadSVG("images/images/m-cat-01-12.svg"));
-    this.images.push(this.p.loadSVG("images/images/m-cat-02-12.svg"));
-    this.images.push(this.p.loadSVG("images/images/m-cat-02-19.svg"));
-    this.images.push(this.p.loadSVG("images/images/m-cat-02-90.svg"));
-    this.images.push(this.p.loadSVG("images/images/m-cat-02-97.svg"));
-    this.images.push(this.p.loadSVG("images/images/m-cat-03-46.svg"));
-
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash1.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash2.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash3.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash4.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash5.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash6.svg"))
-    this.backgroundImages.push(this.p.loadSVG("images/flash/flash7.svg"))
+    for (let j = 0; j < 5; j++) {
+      var z = j + 1
+      let str = "images/background/{0}.svg".format(z)
+      let SVGFile = this.p.loadSVG(str)
+      this.backgroundImages.push(SVGFile)
+    }
 
   }
 
@@ -331,6 +319,8 @@ export class Blocks {
       }
     }
     
+    // Stage 3
+    this.setSVGId("Layer3")
 
     // // Big Artifacts
     // for (let i = 0; i < artifacts.length; i++) {

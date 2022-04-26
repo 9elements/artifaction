@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 25.4.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 113.4 113.4" style="enable-background:new 0 0 113.4 113.4;" xml:space="preserve">
-<g>
-	<polygon points="0,-0.3 0,13.1 100,113.1 113.4,113.1 113.4,99.6 13.4,-0.3 	"/>
-	<polygon points="0,69.8 43.3,113.1 70.1,113.1 0,42.9 	"/>
-	<polygon points="0,113.1 13.4,113.1 0,99.6 	"/>
-	<polygon points="43.3,-0.3 113.4,69.8 113.4,42.9 70.1,-0.3 	"/>
-	<polygon points="113.4,-0.3 100,-0.3 113.4,13.1 	"/>
-</g>
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.2163 0.0100098L0.719727 12.4978V0.0100098H13.2163Z" fill="black"/>
+<path d="M25.7223 0.0100098L0.719727 25.0385V37.5352L38.2189 0.0452869L25.7223 0.0100098Z" fill="black"/>
+<path d="M0.719727 49.9965L50.7154 0.0100098V12.4978L0.719727 62.5019V49.9965Z" fill="black"/>
+<path d="M0.719727 74.9986L50.7154 25.0385V37.5351L0.719727 87.5305V74.9986Z" fill="black"/>
+<path d="M0.719727 100.001L50.7154 49.9965V62.502L13.2163 100.001H0.719727Z" fill="black"/>
+<path d="M25.7222 100.001L50.7153 74.9985V87.4952L38.192 100.001H25.7222Z" fill="black"/>
+<path d="M88.2139 0.0100098L100.72 12.4978V0.0100098H88.2139Z" fill="black"/>
+<path d="M75.7173 0.0100098L100.72 25.0385V37.5352L63.2207 0.0452869L75.7173 0.0100098Z" fill="black"/>
+<path d="M100.72 49.9965L50.7153 0.0100098V12.4978L100.72 62.5019V49.9965Z" fill="black"/>
+<path d="M100.72 74.9986L50.7153 25.0385V37.5351L100.72 87.5305V74.9986Z" fill="black"/>
+<path d="M100.72 100.001L50.7153 49.9965V62.502L88.2136 100.001H100.72Z" fill="black"/>
+<path d="M75.7171 100.001L50.7153 74.9985V87.4952L63.2205 100.001H75.7171Z" fill="black"/>
 </svg>
