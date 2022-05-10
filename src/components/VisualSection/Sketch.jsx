@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
 
-const canvasSize = 380
+const canvasSize = 400
 const dimensions = 8
 
 var BlocksNFT
@@ -66,7 +66,6 @@ function Sketch() {
         BlocksNFT.Init()
       }
     }
-    console.log("new p5")
     new p5(sketch, "sketchcontainer")
   }
 
