@@ -6,3 +6,7 @@
 .visual {
   padding-bottom: 6rem;
 }
+
+.countdownPlaceholder {
+  height: var(--font-lg);
+}

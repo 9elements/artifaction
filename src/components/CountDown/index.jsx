@@ -13,14 +13,12 @@ const CountDown = () => {
   const isOver = countdown <= 0
 
   return isOver ? null : (
-    <section className="section container">
-      <p className={styles.countdown}>
-        <span>{days}d </span>
-        <span>{hours}h </span>
-        <span>{minutes}m </span>
-        <span>{seconds}s </span>
-      </p>
-    </section>
+    <p className={styles.countdown}>
+      <span>{days}d </span>
+      <span>{hours}h </span>
+      <span>{minutes}m </span>
+      <span>{seconds}s </span>
+    </p>
   )
 }
 

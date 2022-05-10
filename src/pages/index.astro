@@ -14,7 +14,11 @@ import styles from "./index.module.css"
   <Intro />
 
   <main>
-    <CountDown client:load />
+    <section class="section container">
+      <div class={styles.countdownPlaceholder}>
+        <CountDown client:only />
+      </div>
+    </section>
     <!-- <VisualSection client:load /> -->
     <section class="section container container--wide">
       <img
