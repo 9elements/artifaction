@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/default.astro"
 import Intro from "../components/Intro/index.astro"
-import VisualSection from "../components/VisualSection"
+// import VisualSection from "../components/VisualSection"
 import Showcase from "../components/Showcase/index.astro"
 import People from "../components/People/index.astro"
 
@@ -13,7 +13,15 @@ import styles from "./index.module.css"
   <Intro />
 
   <main>
-    <VisualSection client:load />
+    <!-- <VisualSection client:load /> -->
+    <section class="section container container--wide">
+      <img
+        loading="lazy"
+        decoding="async"
+        src="/images/visuals/intro-visual.svg"
+        alt="A colorful randomly generated visual consisting of different shapes"
+      />
+    </section>
 
     <section class="container section" id="how-it-works">
       <div class="prose">
