@@ -39,7 +39,6 @@ function SetUp(wrappername, containername) {
  * core functionality
  */
 function Sketch() {
-
   async function generateBlocks() {
     // Init
     CleanUp("sketchcontainer")
@@ -51,8 +50,8 @@ function Sketch() {
 
       p.setup = function () {
         p.createCanvas(
-          canvasSize + (resolution * 4),
-          canvasSize + (resolution * 4),
+          canvasSize + resolution * 4,
+          canvasSize + resolution * 4,
           p.SVG
         )
         BlocksNFT.Genesis()
@@ -63,10 +62,9 @@ function Sketch() {
         // Do nothing.
       }
 
-      p.preload = function() {
+      p.preload = function () {
         BlocksNFT.Init()
       }
-
     }
     console.log("new p5")
     new p5(sketch, "sketchcontainer")
