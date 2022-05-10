@@ -94,5 +94,4 @@ h4 {
 
 .section {
   padding-block: clamp(3rem, 5vw, 4rem);
-  padding-inline: 1rem;
 }
