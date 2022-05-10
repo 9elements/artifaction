@@ -13,15 +13,11 @@ const countDown = () => {
   const secondsRemaining = seconds % 60
 
   element.innerHTML = `
-    <span aria-hidden="true">${days}d /</span>
-    <span aria-hidden="true">${hoursRemaining}h /</span>
-    <span aria-hidden="true">${minutesRemaining}m /</span>
-    <span aria-hidden="true">${secondsRemaining}s </span>
+    <span>${days}d /</span>
+    <span>${hoursRemaining}h /</span>
+    <span>${minutesRemaining}m /</span>
+    <span>${secondsRemaining}s </span>
   `
-  element.setAttribute(
-    "aria-label",
-    `Release in ${days} days, ${hoursRemaining} hours, ${minutesRemaining} minutes`
-  )
 }
 
 setInterval(countDown, 1000)
