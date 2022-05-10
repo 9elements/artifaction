@@ -32,7 +32,14 @@ const Slider = () => {
       >
         {images.map((image, i) => (
           <SwiperSlide key={i}>
-            <img width="800" height="800" src={image.src} alt="" />
+            <img
+              width="800"
+              height="800"
+              src={image.src}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
