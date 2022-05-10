@@ -1,0 +1,7 @@
+.wrapper {
+  padding-inline: 0;
+}
+
+.slider {
+  z-index: calc(var(--index-grain) + 10);
+}

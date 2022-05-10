@@ -1,10 +1,9 @@
 ---
 import Layout from "../layouts/default.astro"
 import Intro from "../components/Intro/index.astro"
-// import VisualSection from "../components/VisualSection"
 import Showcase from "../components/Showcase/index.astro"
+import Slider from "../components/Slider"
 import People from "../components/People/index.astro"
-
 import cx from "classnames"
 import styles from "./index.module.css"
 ---
@@ -20,6 +19,8 @@ import styles from "./index.module.css"
         decoding="async"
         src="/images/visuals/intro-visual.svg"
         alt="A colorful randomly generated visual consisting of different shapes"
+        width="864"
+        height="736"
       />
     </section>
 
@@ -65,12 +66,10 @@ import styles from "./index.module.css"
           smaller and finer elements repeating next to each other are creating a
           kind of digital glitch effects.
         </p>
-
-        <a href="https://github.com/9elements/artifaction">
-          View Project on GitHub
-        </a>
       </div>
     </section>
+
+    <Slider client:load />
 
     <Showcase />
 

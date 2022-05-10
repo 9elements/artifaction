@@ -1,0 +1,9 @@
+@import "swiper/css";
+
+.swiper {
+  z-index: calc(var(--index-grain) + 10);
+}
+
+.swiper-slide {
+  width: min(50rem, 80%);
+}
