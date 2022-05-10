@@ -1,26 +1,36 @@
 export const people = [
   {
     name: "Vanessa Walter",
-    jobTitle: "Job Title",
+    imageName: "vanessa",
+    insta: "this_is_walter_",
   },
   {
     name: "Christian Walter",
-    jobTitle: "Job Title",
     twitter: "nablahero",
-  },
-  {
-    name: "Eray Basar",
-    jobTitle: "Job Title",
-    twitter: "toshiyori",
-  },
-  {
-    name: "Sebastian Deutsch",
-    jobTitle: "Job Title",
-    twitter: "sippndipp",
+    imageName: "christian",
   },
   {
     name: "Tommi Gutscher",
-    jobTitle: "Job Title",
-    twitter: "t0mmig",
+    insta: "t0mmig",
+    imageName: "thomas",
+  },
+  {
+    name: "Eray Basar",
+    twitter: "toshiyori",
+    imageName: "eray",
+  },
+  {
+    name: "Sebastian Deutsch",
+    twitter: "sippndipp",
+    imageName: "sebastian",
+  },
+  {
+    name: "Celina Breucker",
+    twitter: "sippndipp",
+    imageName: "celina",
+  },
+  {
+    name: "Nesim",
+    imageName: "nesim",
   },
 ]

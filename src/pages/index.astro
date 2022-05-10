@@ -4,7 +4,7 @@ import Intro from "../components/Intro/index.astro"
 import Showcase from "../components/Showcase/index.astro"
 import Slider from "../components/Slider"
 import People from "../components/People/index.astro"
-import CountDown from "../components/CountDown"
+import CountDown from "../components/CountDown/index.astro"
 
 import cx from "classnames"
 import styles from "./index.module.css"
@@ -14,13 +14,8 @@ import styles from "./index.module.css"
   <Intro />
 
   <main>
-    <section class="section container">
-      <div class={styles.countdownPlaceholder}>
-        <CountDown client:only />
-      </div>
-    </section>
     <!-- <VisualSection client:load /> -->
-    <section class="section container container--wide">
+    <section class="section relative container container--wide">
       <img
         loading="lazy"
         decoding="async"
@@ -28,7 +23,10 @@ import styles from "./index.module.css"
         alt="A colorful randomly generated visual consisting of different shapes"
         width="864"
         height="736"
+        class={styles.visual}
       />
+
+      <CountDown />
     </section>
 
     <section class="container section" id="how-it-works">

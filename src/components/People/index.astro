@@ -4,34 +4,45 @@ import cx from "classnames"
 import styles from "./styles.module.css"
 ---
 
-<!-- TODO: Images with webp and avif -->
+
 
 <ul class={cx(styles.grid, "section")}>
-  {people.map(({ name, jobTitle, twitter }) => (
+  {people.map(({ name, imageName, insta, twitter }) => (
     <li class={styles.person} itemscope itemtype="https://schema.org/Person">
-      <img
-        src="https://placekitten.com/400/400"
-        width="400"
-        height="400"
-        loading="lazy"
-        decoding="async"
-        alt=""
-        class={styles.portrait}
-      />
+      <picture>
+        <source srcset={`/images/people/${imageName}.avif`} type="image/avif" />
+        <source srcset={`/images/people/${imageName}.webp`} type="image/webp" />
+        <img
+          src={`/images/people/${imageName}.jpg`}
+          width="400"
+          height="400"
+          loading="lazy"
+          decoding="async"
+          alt=""
+          class={styles.portrait}
+        />
+      </picture>
       <h3 itemprop="name" class={styles.name}>
         {name}
       </h3>
-      <span itemprop="jobTitle" class={styles.jobTitle}>
-        {jobTitle}
-      </span>
       {twitter && (
         <a
           itemprop="url"
           href={`https://twitter.com/${twitter}`}
           aria-label={`Follow ${name} on Twitter (@${twitter})`}
-          class={styles.twitter}
+          class={styles.social}
         >
           @{twitter}
+        </a>
+      )}
+      {insta && (
+        <a
+          itemprop="url"
+          href={`https://instagram.com/${insta}`}
+          aria-label={`Follow ${name} on Instagram (@${insta})`}
+          class={styles.social}
+        >
+          @{insta}
         </a>
       )}
     </li>

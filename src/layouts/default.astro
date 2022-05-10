@@ -14,7 +14,7 @@ const hash = Math.random().toString().substring(2, 12)
 
 <!-- TODO: Proper Meta description and Image -->
 
-<html lang="en">
+<html lang="en" class="no-js">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -44,6 +44,11 @@ const hash = Math.random().toString().substring(2, 12)
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="theme-color" content="#1D1D1B" />
+
+    <script>
+      document.documentElement.classList.remove("no-js")
+      document.documentElement.classList.add("js-active")
+    </script>
 
     <!-- <script src="./js/p5/p5.min.js" is:inline defer></script>
     <script src="./js/p5/p5.svg.min.js" is:inline defer></script> -->
