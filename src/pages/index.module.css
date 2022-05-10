@@ -3,6 +3,16 @@
   margin-block: 5rem;
 }
 
+.visualOverline {
+  margin-bottom: 2.5em;
+  color: var(--color-green);
+  font-family: var(--font-display);
+  font-size: var(--font-base);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .visual {
   z-index: 0;
 }

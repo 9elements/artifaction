@@ -1,4 +1,6 @@
 const countDown = () => {
+  const element = document.getElementById("countdown")
+
   const now = new Date().getTime()
   const then = new Date("Jun 1, 2022").getTime()
   const diff = then - now
@@ -10,12 +12,16 @@ const countDown = () => {
   const minutesRemaining = minutes % 60
   const secondsRemaining = seconds % 60
 
-  document.getElementById("countdown").innerHTML = `
-    <span>${days}d /</span>
-    <span>${hoursRemaining}h /</span>
-    <span>${minutesRemaining}m /</span>
-    <span>${secondsRemaining}s </span>
+  element.innerHTML = `
+    <span aria-hidden>${days}d /</span>
+    <span aria-hidden>${hoursRemaining}h /</span>
+    <span aria-hidden>${minutesRemaining}m /</span>
+    <span aria-hidden>${secondsRemaining}s </span>
   `
+  element.setAttribute(
+    "aria-label",
+    `Release ${days} days, ${hoursRemaining} hours, ${minutesRemaining} minutes`
+  )
 }
 
 setInterval(countDown, 1000)
