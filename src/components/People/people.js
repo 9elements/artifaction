@@ -26,7 +26,7 @@ export const people = [
   },
   {
     name: "Celina Breucker",
-    twitter: "sippndipp",
+    insta: "celi_brcker",
     imageName: "celina",
   },
   {
