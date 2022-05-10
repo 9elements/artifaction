@@ -19,6 +19,7 @@
 
   /* Font sizes */
   --font-base: clamp(1rem, 2.5vw, 1.125rem);
+  --font-lg: clamp(1.5rem, 3vw, 3rem);
   --font-xl: clamp(3rem, 6vw, 4.5rem);
 
   /* Indices */

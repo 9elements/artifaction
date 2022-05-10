@@ -30,8 +30,8 @@ const Slider = () => {
         speed={1000}
         className={styles.slider}
       >
-        {images.map((image) => (
-          <SwiperSlide>
+        {images.map((image, i) => (
+          <SwiperSlide key={i}>
             <img width="800" height="800" src={image.src} alt="" />
           </SwiperSlide>
         ))}

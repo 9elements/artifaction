@@ -4326,6 +4326,11 @@ react-p5-wrapper@3.3.0:
     p5 "^1.4.1"
     rooks "^5.10.0"
 
+react-use-countdown@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-use-countdown/-/react-use-countdown-0.1.1.tgz#ec808deeb163c1ff4aca47a1c6b4f534fdda862d"
+  integrity sha512-+DLH4Kbw8UL0CnMIXBBpYLFkcDl7yB4qayuGC/p4U3mQ86Rvob/5eKxjlWhQmScrOFTkNJVKKjoFxacOPigmXw==
+
 react@^18.1.0:
   version "18.1.0"
   resolved "https://registry.yarnpkg.com/react/-/react-18.1.0.tgz#6f8620382decb17fdc5cc223a115e2adbf104890"

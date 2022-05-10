@@ -1,0 +1,9 @@
+.countdown {
+  color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: var(--font-lg);
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
