@@ -11,7 +11,6 @@
   inset: 0;
   text-align: center;
   text-transform: uppercase;
-  white-space: nowrap;
 }
 
 .countdown {
@@ -19,5 +18,6 @@
   background-color: var(--color-green);
   box-shadow: 0 0 2.5rem 0 var(--color-pink);
   color: var(--color-pink);
-  font-size: var(--font-xl);
+  font-size: clamp(1.3rem, calc(0.12rem + 5.98vw), 4.5rem);
+  white-space: nowrap;
 }
