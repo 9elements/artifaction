@@ -7,11 +7,11 @@ import styles from "./styles.module.css"
 
 const Slider = () => {
   const images = [
-    { src: "/images/visuals/slider/slider-visual-black.svg" },
-    { src: "/images/visuals/slider/slider-visual-green.svg" },
-    { src: "/images/visuals/slider/slider-visual-blue-sage.svg" },
-    { src: "/images/visuals/slider/slider-visual-pink.svg" },
-    { src: "/images/visuals/slider/slider-visual-purple.svg" },
+    { src: "/images/visuals/slider/artifact-black.svg" },
+    { src: "/images/visuals/slider/artifact-blue.svg" },
+    { src: "/images/visuals/slider/artifact-green.svg" },
+    { src: "/images/visuals/slider/artifact-pink.svg" },
+    { src: "/images/visuals/slider/artifact-purple.svg" },
   ]
 
   return (
