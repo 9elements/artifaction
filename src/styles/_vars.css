@@ -1,15 +1,15 @@
 :root {
   /* Colors (hsl) */
-  --opacity: 1;
-  --color-cyan: hsl(186 44% 77% / var(--opacity));
-  --color-pink: hsl(300 100% 67% / var(--opacity));
-  --color-indigo: hsl(264 100% 50% / var(--opacity));
-  --color-green: hsl(99 100% 80% / var(--opacity));
-  --color-dark: hsl(0 0% 0% / var(--opacity));
+  --color-cyan: hsl(186 44% 77%);
+  --color-pink: hsl(300 100% 67%);
+  --color-indigo: hsl(264 100% 50%);
+  --color-green: hsl(99 100% 80%);
+  --color-green-light: hsl(99 100% 80% / 0.1);
+  --color-dark: hsl(0 0% 0%);
 
   --color-primary: var(--color-green);
-  --color-bg: hsl(60 4% 11% / var(--opacity));
-  --color-text: hsl(0 0% 100% / var(--opacity));
+  --color-bg: hsl(60 4% 11%);
+  --color-text: hsl(0 0% 100%);
 
   /* Font Families */
   --font-sans: "Montserrat", apple-system, BlinkMacSystemFont, "Segoe UI",

@@ -7,7 +7,6 @@ import styles from "./styles.module.css"
 
 const Slider = () => {
   const images = [
-    { src: "/images/visuals/slider/artifact-black.svg" },
     { src: "/images/visuals/slider/artifact-blue.svg" },
     { src: "/images/visuals/slider/artifact-green.svg" },
     { src: "/images/visuals/slider/artifact-pink.svg" },

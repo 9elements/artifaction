@@ -17,7 +17,7 @@
 }
 
 /* Container */
-[class*="container"] {
+.container {
   --max-width: 50rem;
   --padding-inline: 1rem;
 
@@ -70,7 +70,11 @@
   }
 
   & h2 {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.375em;
     font-size: var(--font-xl);
   }
+}
+
+.prose--centered {
+  text-align: center;
 }

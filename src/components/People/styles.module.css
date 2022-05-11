@@ -25,6 +25,10 @@
   list-style-type: none;
   text-align: center;
 
+  & :not(.portrait)::selection {
+    background-color: var(--color-pink);
+  }
+
   @media (--hover) {
     justify-content: center;
     padding: 1.5rem 0.75rem;

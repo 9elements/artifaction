@@ -1,0 +1,60 @@
+---
+import styles from "./styles.module.css"
+import cx from "classnames"
+---
+
+<section class="section container prose prose--centered">
+  <h2>X-CITED?</h2>
+  <p>
+    Stay tuned and subscribe. The day before the release you will receive a
+    reminder email. The first contingent of NFTs and prints is limited.
+  </p>
+
+  <form
+    action="https://9elements.us18.list-manage.com/subscribe/post"
+    method="post"
+    class={styles.form}
+  >
+    <!-- Original Form: http://eepurl.com/h1OrU1 -->
+    <input type="hidden" name="u" value="cf5098cfa3c3cc3bb23a48829" />
+    <input type="hidden" name="id" value="89458df5d2" />
+
+    <div class={styles.inputs}>
+      <label class="sr-only" for="MERGE1">Name</label>
+      <input
+        class={styles.input}
+        type="text"
+        name="MERGE1"
+        id="MERGE1"
+        placeholder="Name"
+      />
+
+      <label class="sr-only" for="MERGE0">Email</label>
+      <input
+        class={styles.input}
+        type="email"
+        name="MERGE0"
+        id="MERGE0"
+        placeholder="Email"
+        required
+      />
+
+      <div class={styles.disclaimer}>
+        <input
+          type="checkbox"
+          id="gdpr_93138"
+          name="gdpr[93138]"
+          class={styles.checkbox}
+          required
+        />
+        <label for="gdpr_93138" class={styles.disclaimerLabel}>
+          I have read the
+          <a href="https://9elements.com/privacy"> privacy policy</a>
+          and confirm my agreement
+        </label>
+      </div>
+    </div>
+
+    <button class={cx("button", styles.button)}>SUBSCRIBE</button>
+  </form>
+</section>
