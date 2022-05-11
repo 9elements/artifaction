@@ -1,36 +1,43 @@
 export const people = [
   {
-    name: "Vanessa Walter",
+    firstName: "Vanessa",
+    lastName: "Walter",
     imageName: "vanessa",
     insta: "this_is_walter_",
   },
   {
-    name: "Christian Walter",
+    firstName: "Christian",
+    lastName: "Walter",
     twitter: "nablahero",
     imageName: "christian",
   },
   {
-    name: "Tommi Gutscher",
+    firstName: "Tommi",
+    lastName: "Gutscher",
     insta: "t0mmig",
     imageName: "thomas",
   },
   {
-    name: "Eray Basar",
+    firstName: "Eray",
+    lastName: "Basar",
     twitter: "toshiyori",
     imageName: "eray",
   },
   {
-    name: "Sebastian Deutsch",
+    firstName: "Sebastian",
+    lastName: "Deutsch",
     twitter: "sippndipp",
     imageName: "sebastian",
   },
   {
-    name: "Celina Breucker",
+    firstName: "Celina",
+    lastName: "Breucker",
     insta: "celi_brcker",
     imageName: "celina",
   },
   {
-    name: "Nesim",
+    firstName: "Nesim",
+    lastName: "Alkan",
     imageName: "nesim",
   },
 ]

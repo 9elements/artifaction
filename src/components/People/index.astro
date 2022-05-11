@@ -7,7 +7,7 @@ import styles from "./styles.module.css"
 
 
 <ul class={cx(styles.grid, "section")}>
-  {people.map(({ name, imageName, insta, twitter }) => (
+  {people.map(({ firstName, lastName, imageName, insta, twitter }) => (
     <li class={styles.person} itemscope itemtype="https://schema.org/Person">
       <picture>
         <source srcset={`/images/people/${imageName}.avif`} type="image/avif" />
@@ -23,13 +23,13 @@ import styles from "./styles.module.css"
         />
       </picture>
       <h3 itemprop="name" class={styles.name}>
-        {name}
+        {firstName} <br> {lastName}
       </h3>
       {twitter && (
         <a
           itemprop="url"
           href={`https://twitter.com/${twitter}`}
-          aria-label={`Follow ${name} on Twitter (@${twitter})`}
+          aria-label={`Follow ${firstName} on Twitter (@${twitter})`}
           class={styles.social}
         >
           @{twitter}
@@ -39,7 +39,7 @@ import styles from "./styles.module.css"
         <a
           itemprop="url"
           href={`https://instagram.com/${insta}`}
-          aria-label={`Follow ${name} on Instagram (@${insta})`}
+          aria-label={`Follow ${firstName} on Instagram (@${insta})`}
           class={styles.social}
         >
           @{insta}
