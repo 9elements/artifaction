@@ -1,27 +1,10 @@
 export class Glitch {
-    constructor(p, res, color) {
+    constructor(p, configuration) {
         this.p = p
-        this.res = res
-        this.color = color
-        this.width = 400
-        this.height = 400
+        this.configuration = configuration
+        this.width = configuration.resolution * configuration.dimension
+        this.height = configuration.resolution * configuration.dimension
         this.inverted = false
-
-        this.colorCodeStrings = [    
-            this.p.color(0, 255, 163, 150),
-            this.p.color(56, 244, 109, 150),
-            this.p.color(199, 11, 150, 180),
-            this.p.color(170, 217, 222, 150),
-            this.p.color(251, 113, 113, 255),
-        ];
-    
-        this.colorCodeInvertedStrings = [
-        this.p.color(103, 2, 255, 150),
-        this.p.color(56, 244, 109, 150),
-        this.p.color(56, 244, 109, 255),
-        this.p.color(66, 0, 101, 150),
-        this.p.color(4, 142, 142, 150),
-        ];
     }
 
     draw(x, y, width, height) {
@@ -31,25 +14,52 @@ export class Glitch {
 
         this.p.noStroke()
         if (this.inverted) {
-            this.p.fill(this.colorCodeInvertedStrings[this.color])
+            this.p.fill(this.configuration.color[this.configuration.colorScheme].glitchInvertedColor)
         } else {
-            this.p.fill(this.colorCodeStrings[this.color])
+            this.p.fill(this.configuration.color[this.configuration.colorScheme].glitchColor)
         }
 
-        if (Math.random() < 0.1) {
-            this.p.rect(x + this.getRandomInt(x / 2),
-            y + this.getRandomInt(y / 2),
-            height + this.getRandomInt(height), 
-            width + this.getRandomInt(width / 2))        
+        if (Math.random() < 0.2) {
+            this.p.rect(x , y , height, width)
+        } else if (Math.random() < 0.6) {
+            this.p.rect(x, y, width, height)
         } else {
-            this.p.rect(x + this.getRandomInt(x),
-            y + this.getRandomInt(y / 2),
-            width + this.getRandomInt(width / 2),
-            height + this.getRandomInt(height))
+            this.setGradient(x, y, width, height, this.configuration.color[this.configuration.colorScheme].glitchRainbowColor)
         }
     }
 
     getRandomInt(max) {
         return Math.ceil(Math.random() * max) * (Math.round(Math.random()) ? 1 : -1)
       }
+
+    setGradient(x, y, w, h, colorMap) {
+        this.p.noFill();
+        if (colorMap != undefined) {
+            if (colorMap.length > 1) {
+                let chunks = colorMap.length - 1
+                let widthSteps = w / chunks
+                for (let i = 0; i < chunks; i++) {
+                    let newX = x + (i * widthSteps)
+                    let c1 = this.configuration.color[this.configuration.colorScheme].glitchRainbowColor[i]
+                    let c2 = this.configuration.color[this.configuration.colorScheme].glitchRainbowColor[i+1]
+                    for (let j = newX; j <= newX + widthSteps; j++) {
+                        let inter = this.p.map(j, newX, newX + widthSteps, 0, 1);
+                        let c = this.p.lerpColor(c1, c2, inter);
+                        this.p.stroke(c);
+                        this.p.line(j, y, j, y + h);
+                    }
+                }
+            }
+        } else {
+            let c1 = this.configuration.color[this.configuration.colorScheme].glitchColor
+            let c2 = this.configuration.color[this.configuration.colorScheme].glitchInvertedColor
+            // Left to right gradient
+            for (let i = x; i <= x + w; i++) {
+                let inter = this.p.map(i, x, x + w, 0, 1);
+                let c = this.p.lerpColor(c1, c2, inter);
+                this.p.stroke(c);
+                this.p.line(i, y, i, y + h);
+            }
+        }
+    }
 }
