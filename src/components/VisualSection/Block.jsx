@@ -1,5 +1,5 @@
 export class Block {
-  constructor(p, vector, height, width, res, color, img, raster) {
+  constructor(p, vector, height, width, res, color, img, raster, shadowColor) {
     // constructor
     this.p = p
     this.vector = vector
@@ -23,6 +23,8 @@ export class Block {
     this.seed = Math.random()
 
     this.colorCode = 0
+
+    this.shadowColor = shadowColor
   }
 
   colorCodeStrings = [
@@ -45,14 +47,12 @@ export class Block {
   // Draw Mask
   drawMask(noiseTreshold) {
     let gr = this.p.createGraphics(320, 320, 'svg')
-    let bg = this.p.createGraphics(320, 320, 'svg')
 
     var seg = (this.dim / this.width) * this.raster
 
     let offset = 1;
     let res_t = 100 / this.dim
     gr.noStroke()
-    bg.noStroke()
 
     for (var i = 0; i < this.dim; i += seg) {
       for (var j = 0; j < this.dim; j += seg) {
@@ -126,6 +126,8 @@ export class Block {
       this.drawMask(noiseTreshold)
     }
 
+    // this.shade()
+
     this.p.image(
       this.img,
       this.vector.x * this.res + this.res * 2,
@@ -134,5 +136,25 @@ export class Block {
       this.height * this.res
     )
   }
+
+  shade() {
+    this.setGradient(this.vector.x * this.res + this.res * 2, this.vector.y * this.res + this.res * 2, this.width * this.res, this.height * this.res)
+  }
   
+
+  setGradient(x, y, w, h) {
+    this.p.noFill();
+    let c1 = this.shadowColor
+    let c2 = this.p.color(c1.rgba[0], c1.rgba[1], c1.rgba[2], c1.rgba[3])
+    c1.rgba[3] = 150
+    c2.rgba[3] = 0
+    
+    this.p.strokeWeight(3)
+    for (let i = y; i <= y + h; i++) {
+      let inter = this.p.map(i, y, y + h, 0, 1);
+      let c = this.p.lerpColor(c1, c2, inter);
+      this.p.stroke(c);
+      this.p.line(x, i, x + w, i);
+    }
+}
 }
