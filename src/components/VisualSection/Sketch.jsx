@@ -1,9 +1,10 @@
 /* eslint-disable */
-import cx from "classnames"
 import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
 import { useEffect } from "react"
+import { jsPDF } from "jspdf"
+import "svg2pdf.js"
 
 const canvasSize = 400
 const dimensions = 8
@@ -71,6 +72,33 @@ function Sketch() {
     new p5(sketch, "sketchcontainer")
   }
 
+  const pdfSize = 200 // in mm
+
+  function generatePDF() {
+    const doc = new jsPDF({
+      compress: false,
+      unit: "mm",
+      format: [pdfSize, pdfSize],
+    })
+
+    const artwork = document.querySelector("#sketchcontainer   svg")
+
+    doc
+      .svg(artwork, {
+        x: 0,
+        y: 0,
+        width: pdfSize,
+        height: pdfSize,
+      })
+      .then(() => {
+        console.log("SVG rendered")
+        doc.save(`artifaction-artwork-${Date.now()}.pdf`)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+
   useEffect(() => {
     generateBlocks()
   }, [])
@@ -87,6 +115,9 @@ function Sketch() {
         <button className="button">Connect Metamask</button>
         <button className="button" onClick={generateBlocks}>
           How to mine
+        </button>
+        <button className="button" onClick={generatePDF}>
+          PDF
         </button>
       </div>
     </section>
