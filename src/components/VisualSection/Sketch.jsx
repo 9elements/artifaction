@@ -1,7 +1,9 @@
 /* eslint-disable */
+import cx from "classnames"
 import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
+import { useEffect } from "react"
 
 const canvasSize = 400
 const dimensions = 8
@@ -69,12 +71,14 @@ function Sketch() {
     new p5(sketch, "sketchcontainer")
   }
 
+  useEffect(() => {
+    generateBlocks()
+  }, [])
+
   return (
-    <section className="container section">
-      <div>
-        <div style={{ height: 600 }}>
-          <div id="sketchwrapper"></div>
-        </div>
+    <section className={"container section"}>
+      <div className={styles.artwork}>
+        <div id="sketchwrapper"></div>
       </div>
       <div className={styles.buttons}>
         <button className="button" onClick={generateBlocks}>
