@@ -1,7 +1,9 @@
-<svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.939941 0.389893V12.2341L89.0955 100.39H100.94V88.5369L12.8016 0.389893H0.939941Z" fill="#020206"/>
-<path d="M0.939941 62.2383L39.0913 100.39H62.7883L0.939941 38.5413V62.2383Z" fill="#020206"/>
-<path d="M0.939941 100.39H12.7927L0.939941 88.5369V100.39Z" fill="#020206"/>
-<path d="M39.1001 0.389893L100.94 62.2295V38.5325L62.7971 0.389893H39.1001Z" fill="#020206"/>
-<path d="M100.94 0.389893H89.1045L100.94 12.2253V0.389893Z" fill="#020206"/>
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<g>
+	<path d="M0,0v11.8L88.2,100H100V88.1L11.9,0H0z"/>
+	<path d="M0,61.8L38.2,100h23.7L0,38.2V61.8z"/>
+	<path d="M0,100h11.9L0,88.1V100z"/>
+	<path d="M38.2,0L100,61.8V38.1L61.9,0H38.2z"/>
+	<path d="M100,0H88.2L100,11.8V0z"/>
+</g>
 </svg>

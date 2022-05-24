@@ -1,18 +1,20 @@
-<svg width="101" height="101" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.40283 50.7087L6.40283 100.7H12.6554L12.6554 50.7087H6.40283Z" fill="black"/>
-<path d="M18.8994 50.7087L18.8994 100.7H25.152L25.152 50.7087H18.8994Z" fill="black"/>
-<path d="M31.4048 50.7088L31.4048 100.699H37.6574V50.7088H31.4048Z" fill="black"/>
-<path d="M43.9019 50.7091V100.7H50.1545V50.7091H43.9019Z" fill="black"/>
-<path d="M56.3984 50.7091V100.7H62.651V50.7091H56.3984Z" fill="black"/>
-<path d="M68.9043 50.7085V100.7H75.1569V50.7085H68.9043Z" fill="black"/>
-<path d="M81.4009 50.7087V100.7H87.6535V50.7087H81.4009Z" fill="black"/>
-<path d="M93.8975 50.7087V100.7H100.15V50.7087H93.8975Z" fill="black"/>
-<path d="M0.149902 0.708878L0.149902 50.709H6.40273L6.40273 0.708878H0.149902Z" fill="black"/>
-<path d="M12.6465 0.700089L12.6465 50.7002H18.8993L18.8993 0.700089H12.6465Z" fill="black"/>
-<path d="M25.1431 0.709007L25.1431 50.7083H31.3959L31.3959 0.709007H25.1431Z" fill="black"/>
-<path d="M37.6489 0.709251V50.7085H43.9018V0.709251H37.6489Z" fill="black"/>
-<path d="M50.1455 0.709251V50.7085H56.3983V0.709251H50.1455Z" fill="black"/>
-<path d="M62.6421 0.708633V50.7087H68.8949V0.708633H62.6421Z" fill="black"/>
-<path d="M75.1475 0.708878V50.709H81.4003V0.708878H75.1475Z" fill="black"/>
-<path d="M87.644 0.708878V50.709H93.8969V0.708878H87.644Z" fill="black"/>
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<g>
+	<path d="M6.3,50v50h6.3V50H6.3z"/>
+	<path d="M18.7,50v50H25V50H18.7z"/>
+	<path d="M31.3,50v50h6.3V50H31.3z"/>
+	<path d="M43.8,50v50H50V50H43.8z"/>
+	<path d="M56.2,50v50h6.3V50H56.2z"/>
+	<path d="M68.8,50v50H75V50H68.8z"/>
+	<path d="M81.3,50v50h6.3V50H81.3z"/>
+	<path d="M93.7,50v50h6.3V50H93.7z"/>
+	<path d="M0,0v50h6.3V0H0z"/>
+	<path d="M12.5,0v50h6.3V0H12.5z"/>
+	<path d="M25,0v50h6.3V0H25z"/>
+	<path d="M37.5,0v50h6.3V0H37.5z"/>
+	<path d="M50,0v50h6.3V0H50z"/>
+	<path d="M62.5,0v50h6.3V0H62.5z"/>
+	<path d="M75,0v50h6.3V0H75z"/>
+	<path d="M87.5,0v50h6.3V0H87.5z"/>
+</g>
 </svg>
