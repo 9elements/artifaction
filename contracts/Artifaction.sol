@@ -14,8 +14,7 @@ contract Artifaction is ERC721URIStorage, Ownable {
 
     constructor() ERC721("Artifaction", "ART") {}
 
-    function mintArt(string memory tokenURI) public payable {
-        require(msg.value >= price, "Not enough ETH sent: check price.");
+    function mintArt(string memory tokenURI) public {
         _tokenIds.increment();
 
         uint256 newTokenId = _tokenIds.current();

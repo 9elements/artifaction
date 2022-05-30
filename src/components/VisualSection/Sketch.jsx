@@ -2,14 +2,18 @@
 import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
-import { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { jsPDF } from "jspdf"
 import "svg2pdf.js"
+import { ethers } from "ethers"
+import Artifaction from "./../../artifacts/contracts/Artifaction.sol/Artifaction.json"
 
 const canvasSize = 400
 const dimensions = 8
 
 var BlocksNFT
+const tokenAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+
 
 /*
  * CleanUp
@@ -99,8 +103,55 @@ function Sketch() {
       })
   }
 
+  const connectHandler = async () => {
+    if (window.ethereum) {
+      try {
+        const res = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        await accountChange(res[0]);
+      } catch (err) {
+        console.error(err);
+      }
+    } else {
+      console.log("Install MetaMask");
+    }
+  };
+
+  const accountChange = async (newAccount) => {
+    try {
+      const balance = await window.ethereum.request({
+        method: "eth_getBalance",
+        params: [newAccount.toString(), "latest"],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const awardItem = async() => {
+    try {
+      if (typeof window.ethereum !== 'undefined') {
+        await connectHandler()
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        const signer = provider.getSigner()
+        const contract = new ethers.Contract(tokenAddress, Artifaction.abi, signer)
+        
+        const transaction = await contract.mintArt("")
+        await transaction.wait()
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   useEffect(() => {
     generateBlocks()
+
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", accountChange);
+    }
   }, [])
 
   return (
@@ -112,8 +163,8 @@ function Sketch() {
         <button className="button" onClick={generateBlocks}>
           Generate
         </button>
-        <button className="button">Connect Metamask</button>
-        <button className="button" onClick={generateBlocks}>
+        <button className="button" onClick={connectHandler}>Connect Metamask</button>
+        <button className="button" onClick={awardItem}>
           How to mine
         </button>
         <button className="button" onClick={generatePDF}>
