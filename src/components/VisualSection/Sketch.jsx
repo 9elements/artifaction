@@ -3,8 +3,6 @@ import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
 import { useEffect } from "react"
-import { jsPDF } from "jspdf"
-import "svg2pdf.js"
 
 const canvasSize = 400
 const dimensions = 8
@@ -72,31 +70,34 @@ function Sketch() {
     new p5(sketch, "sketchcontainer")
   }
 
-  const pdfSize = 200 // in mm
+  function downloadArtwork() {
+    const svg = document.querySelector("#sketchwrapper svg")
 
-  function generatePDF() {
-    const doc = new jsPDF({
-      compress: false,
-      unit: "mm",
-      format: [pdfSize, pdfSize],
+    const removeAttribute = (element, attribute) => {
+      element.removeAttribute(attribute)
+      const children = element.childNodes
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].nodeType === 1) {
+          removeAttribute(children[i], attribute)
+        }
+      }
+    }
+    removeAttribute(svg, "xml:space")
+    svg.querySelectorAll("svg").forEach((element) => {
+      element.setAttribute("xmlns", "http://www.w3.org/2000/svg")
+      element.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink")
     })
 
-    const artwork = document.querySelector("#sketchcontainer   svg")
-
-    doc
-      .svg(artwork, {
-        x: 0,
-        y: 0,
-        width: pdfSize,
-        height: pdfSize,
-      })
-      .then(() => {
-        console.log("SVG rendered")
-        doc.save(`artifaction-artwork-${Date.now()}.pdf`)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
+    var svgData = document.querySelector("#sketchwrapper svg").outerHTML
+    var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" })
+    var svgUrl = URL.createObjectURL(svgBlob)
+    var downloadLink = document.createElement("a")
+    downloadLink.href = svgUrl
+    downloadLink.download = `artifaction-artwork-${Date.now()}`
+    downloadLink.setAttribute("aria-hidden", "true")
+    document.body.appendChild(downloadLink)
+    downloadLink.click()
+    document.body.removeChild(downloadLink)
   }
 
   useEffect(() => {
@@ -116,8 +117,8 @@ function Sketch() {
         <button className="button" onClick={generateBlocks}>
           How to mine
         </button>
-        <button className="button" onClick={generatePDF}>
-          PDF
+        <button className="button" onClick={downloadArtwork}>
+          Download
         </button>
       </div>
     </section>
