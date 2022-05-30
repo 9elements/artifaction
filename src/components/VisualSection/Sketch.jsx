@@ -43,6 +43,7 @@ function Sketch() {
   async function generateBlocks() {
     // Init
     CleanUp("sketchcontainer")
+
     SetUp("sketchwrapper", "sketchcontainer")
 
     let sketch = function (p) {
@@ -67,6 +68,7 @@ function Sketch() {
         BlocksNFT.Init()
       }
     }
+
     new p5(sketch, "sketchcontainer")
   }
 
@@ -83,9 +85,41 @@ function Sketch() {
       }
     }
     removeAttribute(svg, "xml:space")
+
+    // generate alphanumeric id beginning with a letter
+
     svg.querySelectorAll("svg").forEach((element) => {
-      element.setAttribute("xmlns", "http://www.w3.org/2000/svg")
-      element.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink")
+      const id = `_${Math.random().toString(36).substring(2, 8)}`
+      element.removeAttribute("xmlns")
+      element.removeAttribute("xmlns:xlink")
+
+      // Nested SVGs do not work outside the browser, so we need to convert them into <symbol>s and use them with <use>
+      // replace tagName with symbol
+      // element.setAttribute("id", id)
+      const attrs = element
+        .getAttributeNames()
+        .map((attr) => `${attr}="${element.getAttribute(attr)}"`)
+        .join(" ")
+
+      // element.outerHTML = `
+      //     <symbol ${attrs.join(" ")}>
+      //       ${element.innerHTML}
+      //     </symbol>
+      //     <use href="#${id}" xlink:href="#${id}"></use>
+      // `
+      // ${element.outerHTML}
+      // <junge />
+      element.outerHTML = `
+          <g transform="translate(${element.getAttribute(
+            "x"
+          )}, ${element.getAttribute("y")}) scale(${
+        +element.getAttribute("width") / 100
+      }, ${+element.getAttribute("height") / 100})" ${attrs}>
+            ${element.innerHTML}
+          </g>
+      `
+
+      // element.parentNode.insertBefore(useElement, element.nextSibling)
     })
 
     var svgData = document.querySelector("#sketchwrapper svg").outerHTML

@@ -12,6 +12,16 @@
     max-width: 100%;
     height: auto !important;
   }
+
+  & :global(#sketchwrapper) {
+    display: flex;
+    justify-content: center;
+  }
+
+  & :global(#p5_loading) {
+    position: static !important;
+    text-align: center;
+  }
 }
 
 .buttons {
