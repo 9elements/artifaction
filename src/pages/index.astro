@@ -2,6 +2,7 @@
 import Layout from "../layouts/default.astro"
 import Intro from "../components/Intro/index.astro"
 import VisualSection from "../components/VisualSection"
+import OrderDialog from "../components/OrderDialog/index.astro"
 import Newsletter from "../components/Newsletter/index.astro"
 import Showcase from "../components/Showcase/index.astro"
 import Slider from "../components/Slider"
@@ -17,21 +18,7 @@ import styles from "./index.module.css"
 
   <main>
     <VisualSection client:load />
-    <section class="section relative container container--wide">
-      <p class={styles.visualOverline}>Release in</p>
-
-      <img
-        loading="lazy"
-        decoding="async"
-        src="/images/visuals/intro-visual.svg"
-        alt="A colorful randomly generated visual consisting of different shapes"
-        width="864"
-        height="736"
-        class={styles.visual}
-      />
-
-      <CountDown />
-    </section>
+    <OrderDialog />
 
     <Newsletter />
 

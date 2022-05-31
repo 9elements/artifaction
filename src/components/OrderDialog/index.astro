@@ -1,0 +1,170 @@
+---
+import styles from "./styles.module.css"
+---
+
+<dialog id="dialog" class={styles.dialog}>
+  <div class={styles.dialogContent}>
+    <form method="dialog">
+      <button value="cancel" aria-label="Close"> x </button>
+    </form>
+
+    <div>
+      <div id="artwork-preview" style="width:8rem; height:8rem;"></div>
+      <h2>ORDER AS PRINT</h2>
+      <div class="prose">
+        <p>
+          Hey, here's your chance to bring your digital artrwork right to your
+          home and hang it on your analog wall. Once you've minted your NFT and
+          paid the gas fees, all you have to do is:
+        </p>
+      </div>
+      <form
+        name="order"
+        method="post"
+        action="/order-success"
+        data-netlify="true"
+        netlify-honeypot="normal-field"
+      >
+        <label hidden>
+          U a Human? don't fill out this field:
+          <input name="normal-field" />
+        </label>
+
+        <fieldset>
+          <legend>Select your print size</legend>
+          <div class="input-row">
+            <div class="input-row">
+              <div class={styles.checkboxWrapper}>
+                <input
+                  type="radio"
+                  id="size-30x30"
+                  value="30x30"
+                  aria-label="30 x 30 cm"
+                  name="size"
+                  required
+                />
+                <label aria-hidden="true" for="size-30x30">Size</label>
+                <span>30 x 30 cm</span>
+              </div>
+              <div class={styles.checkboxWrapper}>
+                <input
+                  type="radio"
+                  id="size-70x70"
+                  value="70x70"
+                  name="size"
+                  aria-label="70 x 70 cm"
+                  required
+                />
+                <label aria-hidden="true" for="size-70x70">Size</label>
+                <span>70 x 70 cm</span>
+              </div>
+            </div>
+            <div class="prose">
+              <p>
+                Glicée print on decor smooth art paper 210 gm2. The colors may
+                vary slightly.
+              </p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Enter your shipping address</legend>
+          <div class="input-row">
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+              aria-label="First Name"
+              placeholder="First Name"
+              required
+            />
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+              aria-label="Last Name"
+              placeholder="Last Name"
+              required
+            />
+            <input
+              type="text"
+              name="address"
+              id="address"
+              aria-label="Street and house number"
+              placeholder="Street and house number"
+              required
+            />
+            <div class="input-row fixed">
+              <input
+                type="text"
+                name="postal-code"
+                id="postal-code"
+                aria-label="Postal Code"
+                placeholder="Postal Code"
+                required
+              />
+              <input
+                type="text"
+                name="city"
+                id="city"
+                aria-label="City"
+                placeholder="City"
+                required
+              />
+            </div>
+            <input
+              type="text"
+              name="company"
+              id="company"
+              aria-label="Company (optional)"
+              placeholder="Company (optional)"
+            />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              aria-label="Email"
+              placeholder="Email"
+              required
+            />
+          </div>
+        </fieldset>
+
+        <input type="hidden" readonly name="artwork" id="artwork" />
+
+        <div class={styles.checkboxWrapper}>
+          <input type="checkbox" id="privacy" name="privacy" required />
+          <label for="privacy">
+            <span>
+              I have read the{" "}
+              <a href="https://9elements.com/privacy">privacy policy</a>{" "}
+              and confirm my agreement
+            </span>
+          </label>
+        </div>
+
+        <div class={styles.dialogButtons}>
+          <button
+            type="submit"
+            class="button"
+            style="--color: var(--color-pink)"
+          >
+            Submit order
+          </button>
+          <button type="reset" id="cancel-order" class="button">
+            Cancel order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document
+    .getElementById("cancel-order")
+    .addEventListener("click", function () {
+      document.getElementById("dialog").close()
+    })
+</script>
