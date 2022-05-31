@@ -200,8 +200,9 @@ function Sketch() {
               <form
                 name="order"
                 method="POST"
+                data-netlify-recaptcha="true"
                 data-netlify="true"
-                action="/order-success"
+                action="/order-success/"
               >
                 <fieldset>
                   <legend>Select your print size</legend>
@@ -305,6 +306,9 @@ function Sketch() {
                   name="artwork"
                   value={artworkCode}
                 />
+
+                <div data-netlify-recaptcha="true"></div>
+
                 <div className={styles.dialogButtons}>
                   <button
                     type="submit"
