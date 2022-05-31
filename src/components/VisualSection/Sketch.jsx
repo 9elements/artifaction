@@ -2,8 +2,9 @@
 import styles from "./styles.module.css"
 
 import { Blocks } from "./Blocks"
+import { useEffect, useRef, useState } from "react"
 
-const canvasSize = 380
+const canvasSize = 400
 const dimensions = 8
 
 var BlocksNFT
@@ -42,6 +43,7 @@ function Sketch() {
   async function generateBlocks() {
     // Init
     CleanUp("sketchcontainer")
+
     SetUp("sketchwrapper", "sketchcontainer")
 
     let sketch = function (p) {
@@ -66,24 +68,128 @@ function Sketch() {
         BlocksNFT.Init()
       }
     }
-    console.log("new p5")
+
     new p5(sketch, "sketchcontainer")
   }
 
+  function prepareArtwork() {
+    const svg = document.querySelector("#sketchwrapper svg")
+
+    const removeAttribute = (element, attribute) => {
+      element.removeAttribute(attribute)
+      const children = element.childNodes
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].nodeType === 1) {
+          removeAttribute(children[i], attribute)
+        }
+      }
+    }
+    removeAttribute(svg, "xml:space")
+
+    // Nested SVGs do not work outside the browser, so we need to convert them into <g>s and update some stuff
+
+    // Replace inline styles with svg attributes
+    svg.querySelectorAll("[style*='fill:']").forEach((element) => {
+      element.setAttribute("fill", element.style.fill)
+      element
+        .querySelectorAll("path:not([style*='fill:']):not([fill])")
+        .forEach((path) => {
+          path.setAttribute("fill", element.style.fill)
+        })
+    })
+
+    svg.querySelectorAll("svg").forEach((element) => {
+      element.removeAttribute("xmlns")
+      element.removeAttribute("xmlns:xlink")
+
+      const attrs = element
+        .getAttributeNames()
+        .map((attr) => `${attr}="${element.getAttribute(attr)}"`)
+        .join(" ")
+
+      const width = +element.getAttribute("width")
+      const height = +element.getAttribute("height")
+      const x = +element.getAttribute("x")
+      const y = +element.getAttribute("y")
+
+      // prettier-ignore
+      element.outerHTML = `
+        <g transform="translate(${x}, ${y}) scale(${width === 800 ? 0.605 : width / 100}, ${height === 800 ? 0.605 : height / 100})" ${attrs}>
+          ${element.innerHTML}
+        </g>
+      `
+    })
+
+    document.getElementById("artwork").value = svg.outerHTML
+
+    document.getElementById("artwork-preview").innerHTML = svg.outerHTML
+
+    // var svgData = document.querySelector("#sketchwrapper svg").outerHTML
+    // var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" })
+    // var svgUrl = URL.createObjectURL(svgBlob)
+    // var downloadLink = document.createElement("a")
+    // downloadLink.href = svgUrl
+    // downloadLink.download = `artifaction-artwork-${Date.now()}`
+    // downloadLink.setAttribute("aria-hidden", "true")
+    // document.body.appendChild(downloadLink)
+    // downloadLink.click()
+    // document.body.removeChild(downloadLink)
+  }
+
+  const [artworkCode, setArtworkCode] = useState("")
+
+  // const orderForm = useRef(null)
+
+  const openOrderDialog = () => {
+    const dialog = document.getElementById("dialog")
+
+    if (typeof HTMLDialogElement !== "function") {
+      import("dialog-polyfill").then(({ default: dialogPolyfill }) => {
+        dialogPolyfill.registerDialog(dialog)
+      })
+    }
+
+    dialog.showModal()
+    prepareArtwork()
+  }
+
+  useEffect(() => {
+    generateBlocks()
+  }, [])
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   let form = orderForm.current
+  //   let formData = new FormData(form)
+
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => (window.location.href = "/order-success"))
+  //     .catch((error) => alert(error))
+  // }
+
+  const onCancel = () => {
+    orderDialog.current.close()
+  }
+
   return (
-    <section className="container section">
-      <div>
-        <div style={{ height: 600 }}>
-          <div id="sketchwrapper"></div>
-        </div>
+    <section className={"container section"}>
+      <div className={styles.artwork}>
+        <div id="sketchwrapper"></div>
       </div>
       <div className={styles.buttons}>
         <button className="button" onClick={generateBlocks}>
           Generate
         </button>
-        <button className="button">Connect Metamask</button>
-        <button className="button" onClick={generateBlocks}>
+        {/* <button className="button">Connect Metamask</button> */}
+        {/* <button className="button" onClick={generateBlocks}>
           How to mine
+        </button> */}
+        <button className="button" onClick={openOrderDialog}>
+          Order as print
         </button>
       </div>
     </section>

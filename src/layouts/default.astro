@@ -4,7 +4,7 @@ import Footer from "../components/Footer/index.astro"
 
 import "../styles/global.css"
 
-const { title, description } = Astro.props
+const { title, description, noindex } = Astro.props
 const pageDescription =
   description ||
   "A generative project that creates unique visual objects through the random composition of different geometric artifacts. You can generated new visuals by your own with a single click. Don't like it? Just click again – then the first one is lost forever, but the next one might be so beautiful that it could become your next tattoo."
@@ -43,13 +43,14 @@ const hash = Math.random().toString().substring(2, 12)
 
     <meta name="theme-color" content="#1D1D1B" />
 
+    {noindex && <meta name="robots" content="noindex nofollow" />}
+
     <script>
       document.documentElement.classList.remove("no-js")
       document.documentElement.classList.add("js-active")
     </script>
-
-    <!-- <script src="./js/p5/p5.min.js" is:inline defer></script>
-    <script src="./js/p5/p5.svg.min.js" is:inline defer></script> -->
+    <script src="./js/p5/p5.js" is:inline></script>
+    <script src="./js/p5/p5.svg.js" is:inline></script>
   </head>
 
   <body>

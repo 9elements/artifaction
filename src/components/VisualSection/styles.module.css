@@ -1,3 +1,29 @@
+.artwork {
+  display: flex;
+  width: 100%;
+  max-height: 37.5rem;
+
+  justify-content: center;
+  aspect-ratio: 1;
+  margin-inline: auto;
+
+  & :global(#defaultCanvas) {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  & :global(#sketchwrapper) {
+    display: flex;
+    justify-content: center;
+  }
+
+  & :global(#p5_loading) {
+    position: static !important;
+    text-align: center;
+  }
+}
+
 .buttons {
   display: flex;
   flex-wrap: wrap;

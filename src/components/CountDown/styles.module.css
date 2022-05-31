@@ -21,4 +21,9 @@
   font-size: clamp(1.1rem, calc(0.12rem + 5.98vw), 4.5rem);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
+
+  & ::selection {
+    background-color: var(--color-pink);
+    color: var(--color-green);
+  }
 }
