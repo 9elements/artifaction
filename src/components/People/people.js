@@ -24,20 +24,9 @@ export const people = [
     imageName: "eray",
   },
   {
-    firstName: "Sebastian",
-    lastName: "Deutsch",
-    twitter: "sippndipp",
-    imageName: "sebastian",
-  },
-  {
     firstName: "Celina",
     lastName: "Breucker",
     insta: "celi_brcker",
     imageName: "celina",
-  },
-  {
-    firstName: "Nesim",
-    lastName: "Alkan",
-    imageName: "nesim",
   },
 ]
