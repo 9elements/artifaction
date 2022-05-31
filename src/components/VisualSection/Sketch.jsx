@@ -201,7 +201,7 @@ function Sketch() {
                 name="order"
                 method="POST"
                 data-netlify="true"
-                action="/order/success"
+                action="/order-success"
               >
                 <fieldset>
                   <legend>Select your print size</legend>
@@ -295,10 +295,16 @@ function Sketch() {
                       id="email"
                       aria-label="Email"
                       placeholder="Email"
+                      required
                     />
                   </div>
                 </fieldset>
-                <input type="hidden" name="artwork" value={artworkCode} />
+                <input
+                  type="hidden"
+                  readOnly
+                  name="artwork"
+                  value={artworkCode}
+                />
                 <div className={styles.dialogButtons}>
                   <button
                     type="submit"
