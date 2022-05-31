@@ -137,6 +137,7 @@ function Sketch() {
   const [artworkCode, setArtworkCode] = useState("")
 
   const orderDialog = useRef(null)
+  const orderForm = useRef(null)
 
   const openOrderDialog = () => {
     const dialog = orderDialog.current
@@ -155,6 +156,19 @@ function Sketch() {
     generateBlocks()
   }, [])
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let form = orderForm.current
+    let formData = new FormData(form)
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    })
+      .then(() => (window.location.href = "/order-success"))
+      .catch((error) => alert(error))
+  }
+
   const onCancel = () => {
     orderDialog.current.close()
   }
@@ -168,10 +182,10 @@ function Sketch() {
         <button className="button" onClick={generateBlocks}>
           Generate
         </button>
-        <button className="button">Connect Metamask</button>
-        <button className="button" onClick={generateBlocks}>
+        {/* <button className="button">Connect Metamask</button> */}
+        {/* <button className="button" onClick={generateBlocks}>
           How to mine
-        </button>
+        </button> */}
         <button className="button" onClick={openOrderDialog}>
           Order as print
         </button>
@@ -202,7 +216,8 @@ function Sketch() {
                 method="POST"
                 data-netlify-recaptcha="true"
                 data-netlify="true"
-                action="/order-success/"
+                onSubmit={handleSubmit}
+                ref={orderForm}
               >
                 <fieldset>
                   <legend>Select your print size</legend>

@@ -37,6 +37,8 @@
 }
 
 .dialog {
+  padding: 1rem;
+
   &[open] {
     position: fixed;
     display: flex;
@@ -62,11 +64,9 @@
   overflow: auto;
   width: 100%;
   max-width: 60rem;
-  max-height: 100vh;
-  max-height: calc(100vh - 3rem);
+  max-height: 100%;
   padding: clamp(1rem, -0.091rem + 5.45vw, 4rem);
   border: 1px solid var(--color-green);
-  margin: 1rem;
   background-color: var(--color-bg);
 
   & h2 {
