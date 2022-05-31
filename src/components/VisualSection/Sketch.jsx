@@ -137,6 +137,7 @@ function Sketch() {
   const [artworkCode, setArtworkCode] = useState("")
 
   const orderDialog = useRef(null)
+
   const openOrderDialog = () => {
     const dialog = orderDialog.current
 
@@ -153,6 +154,10 @@ function Sketch() {
   useEffect(() => {
     generateBlocks()
   }, [])
+
+  const onCancel = () => {
+    orderDialog.current.close()
+  }
 
   return (
     <section className={"container section"}>
@@ -180,6 +185,10 @@ function Sketch() {
             </form>
 
             <div>
+              <div
+                style={{ width: "8rem", height: "8rem" }}
+                dangerouslySetInnerHTML={{ __html: artworkCode }}
+              />
               <h2>ORDER AS PRINT</h2>
               <div className="prose">
                 <p>
@@ -300,7 +309,7 @@ function Sketch() {
                   >
                     Submit order
                   </button>
-                  <button type="reset" className="button">
+                  <button type="reset" onClick={onCancel} className="button">
                     Cancel order
                   </button>
                 </div>
