@@ -2,6 +2,7 @@
 import Layout from "../layouts/default.astro"
 import Intro from "../components/Intro/index.astro"
 import VisualSection from "../components/VisualSection"
+import OrderDialog from "../components/OrderDialog/index.astro"
 import Newsletter from "../components/Newsletter/index.astro"
 import Showcase from "../components/Showcase/index.astro"
 import Slider from "../components/Slider"
@@ -15,13 +16,10 @@ import styles from "./index.module.css"
 <Layout>
   <Intro />
 
-  <form method="POST" data-netlify="true" name="test">
-    <input type="text" name="tesfield" id="testfield" />
-    <input type="submit" value="submit" />
-  </form>
-
   <main>
     <VisualSection client:load />
+    <OrderDialog />
+
     <section class="section relative container container--wide">
       <p class={styles.visualOverline}>Release in</p>
 

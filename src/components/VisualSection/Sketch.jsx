@@ -120,7 +120,9 @@ function Sketch() {
       `
     })
 
-    setArtworkCode(svg.outerHTML)
+    document.getElementById("artwork").value = svg.outerHTML
+
+    document.getElementById("artwork-preview").innerHTML = svg.outerHTML
 
     // var svgData = document.querySelector("#sketchwrapper svg").outerHTML
     // var svgBlob = new Blob([svgData], { type: "image/svg+xml;charset=utf-8" })
@@ -136,11 +138,10 @@ function Sketch() {
 
   const [artworkCode, setArtworkCode] = useState("")
 
-  const orderDialog = useRef(null)
   // const orderForm = useRef(null)
 
   const openOrderDialog = () => {
-    const dialog = orderDialog.current
+    const dialog = document.getElementById("dialog")
 
     if (typeof HTMLDialogElement !== "function") {
       import("dialog-polyfill").then(({ default: dialogPolyfill }) => {
@@ -190,178 +191,6 @@ function Sketch() {
         <button className="button" onClick={openOrderDialog}>
           Order as print
         </button>
-
-        <dialog ref={orderDialog} className={styles.dialog}>
-          <div className={styles.dialogContent}>
-            <form method="dialog">
-              <button value="cancel" aria-label="Close">
-                x
-              </button>
-            </form>
-
-            <div>
-              <div
-                style={{ width: "8rem", height: "8rem" }}
-                dangerouslySetInnerHTML={{ __html: artworkCode }}
-              />
-              <h2>ORDER AS PRINT</h2>
-              <div className="prose">
-                <p>
-                  Hey, here's your chance to bring your digital artrwork right
-                  to your home and hang it on your analog wall. Once you've
-                  minted your NFT and paid the gas fees, all you have to do is:
-                </p>
-              </div>
-              <form
-                name="order"
-                method="POST"
-                // action="/order-success"
-                data-netlify="true"
-                netlify-honeypot="normal-field"
-                // onSubmit={handleSubmit}
-                // ref={orderForm}
-              >
-                <label hidden>
-                  U a Human? don't fill out this field:
-                  <input name="normal-field" />
-                </label>
-
-                <fieldset>
-                  <legend>Select your print size</legend>
-                  <div className="input-row">
-                    <div className="input-row">
-                      <div className={styles.checkboxWrapper}>
-                        <input
-                          type="radio"
-                          id="size-30x30"
-                          value="30x30"
-                          name="size"
-                          required
-                        />
-                        <label htmlFor="size-30x30">30 x 30 cm</label>
-                      </div>
-                      <div className={styles.checkboxWrapper}>
-                        <input
-                          type="radio"
-                          id="size-70x70"
-                          value="70x70"
-                          name="size"
-                          required
-                        />
-                        <label htmlFor="size-70x70">70 x 70 cm</label>
-                      </div>
-                    </div>
-                    <div className="prose">
-                      <p>
-                        Glicée print on decor smooth art paper 210 g/m². The
-                        colors may vary slightly.
-                      </p>
-                    </div>
-                  </div>
-                </fieldset>
-
-                <fieldset>
-                  <legend>Enter your shipping address</legend>
-                  <div className="input-row">
-                    <input
-                      type="text"
-                      name="first-name"
-                      id="first-name"
-                      aria-label="First Name"
-                      placeholder="First Name"
-                      required
-                    />
-                    <input
-                      type="text"
-                      name="last-name"
-                      id="last-name"
-                      aria-label="Last Name"
-                      placeholder="Last Name"
-                      required
-                    />
-                    <input
-                      type="text"
-                      name="address"
-                      id="address"
-                      aria-label="Street and house number"
-                      placeholder="Street and house number"
-                      required
-                    />
-                    <div className="input-row fixed">
-                      <input
-                        type="text"
-                        name="postal-code"
-                        id="postal-code"
-                        aria-label="Postal Code"
-                        placeholder="Postal Code"
-                        required
-                      />
-                      <input
-                        type="text"
-                        name="city"
-                        id="city"
-                        aria-label="City"
-                        placeholder="City"
-                        required
-                      />
-                    </div>
-                    <input
-                      type="text"
-                      name="company"
-                      id="company"
-                      aria-label="Company (optional)"
-                      placeholder="Company (optional)"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      id="email"
-                      aria-label="Email"
-                      placeholder="Email"
-                      required
-                    />
-                  </div>
-                </fieldset>
-
-                {/* <input
-                  type="hidden"
-                  readOnly
-                  name="artwork"
-                  value={artworkCode}
-                /> */}
-
-                <div className={styles.checkboxWrapper}>
-                  <input type="checkbox" id="privacy" name="privacy" required />
-                  <label htmlFor="privacy">
-                    <span>
-                      I have read the
-                      <a href="https://9elements.com/privacy">
-                        {" "}
-                        privacy policy
-                      </a>
-                      and confirm my agreement
-                    </span>
-                  </label>
-                </div>
-
-                <div className={styles.dialogButtons}>
-                  <button
-                    type="submit"
-                    className="button"
-                    style={{
-                      "--color": "var(--color-pink)",
-                    }}
-                  >
-                    Submit order
-                  </button>
-                  <button type="reset" onClick={onCancel} className="button">
-                    Cancel order
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </dialog>
       </div>
     </section>
   )
