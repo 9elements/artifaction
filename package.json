@@ -23,8 +23,6 @@
   },
   "dependencies": {
     "@astrojs/react": "^0.1.2",
-    "a11y-dialog": "^7.4.0",
-    "add": "^2.0.6",
     "aos": "^2.3.4",
     "astro-icon": "^0.7.1",
     "classnames": "^2.3.1",
