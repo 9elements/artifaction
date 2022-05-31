@@ -150,6 +150,7 @@ export class Block {
     c2.rgba[3] = 0
     
     this.p.strokeWeight(3)
+    this.p.strokeCap(this.p.SQUARE);
     for (let i = y; i <= y + h; i++) {
       let inter = this.p.map(i, y, y + h, 0, 1);
       let c = this.p.lerpColor(c1, c2, inter);
