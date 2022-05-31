@@ -91,7 +91,7 @@
   align-items: center;
   gap: 0.5rem;
 
-  & label {
+  & label[aria-hidden] {
     position: absolute;
     inset: 0;
     opacity: 0;
