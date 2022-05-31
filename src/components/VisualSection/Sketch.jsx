@@ -86,40 +86,38 @@ function Sketch() {
     }
     removeAttribute(svg, "xml:space")
 
-    // generate alphanumeric id beginning with a letter
+    // Nested SVGs do not work outside the browser, so we need to convert them into <g>s and update some stuff
+
+    // Replace inline styles with svg attributes
+    svg.querySelectorAll("[style*='fill:']").forEach((element) => {
+      element.setAttribute("fill", element.style.fill)
+      element
+        .querySelectorAll("path:not([style*='fill:']):not([fill])")
+        .forEach((path) => {
+          path.setAttribute("fill", element.style.fill)
+        })
+    })
 
     svg.querySelectorAll("svg").forEach((element) => {
-      const id = `_${Math.random().toString(36).substring(2, 8)}`
       element.removeAttribute("xmlns")
       element.removeAttribute("xmlns:xlink")
 
-      // Nested SVGs do not work outside the browser, so we need to convert them into <symbol>s and use them with <use>
-      // replace tagName with symbol
-      // element.setAttribute("id", id)
       const attrs = element
         .getAttributeNames()
         .map((attr) => `${attr}="${element.getAttribute(attr)}"`)
         .join(" ")
 
-      // element.outerHTML = `
-      //     <symbol ${attrs.join(" ")}>
-      //       ${element.innerHTML}
-      //     </symbol>
-      //     <use href="#${id}" xlink:href="#${id}"></use>
-      // `
-      // ${element.outerHTML}
-      // <junge />
-      element.outerHTML = `
-          <g transform="translate(${element.getAttribute(
-            "x"
-          )}, ${element.getAttribute("y")}) scale(${
-        +element.getAttribute("width") / 100
-      }, ${+element.getAttribute("height") / 100})" ${attrs}>
-            ${element.innerHTML}
-          </g>
-      `
+      const width = +element.getAttribute("width")
+      const height = +element.getAttribute("height")
+      const x = +element.getAttribute("x")
+      const y = +element.getAttribute("y")
 
-      // element.parentNode.insertBefore(useElement, element.nextSibling)
+      // prettier-ignore
+      element.outerHTML = `
+        <g transform="translate(${x}, ${y}) scale(${width === 800 ? 0.605 : width / 100}, ${height === 800 ? 0.605 : height / 100})" ${attrs}>
+          ${element.innerHTML}
+        </g>
+      `
     })
 
     var svgData = document.querySelector("#sketchwrapper svg").outerHTML
