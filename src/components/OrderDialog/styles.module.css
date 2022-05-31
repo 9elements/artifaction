@@ -86,9 +86,16 @@
 }
 
 .checkboxWrapper {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  & label {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
 
   &,
   & > * {
