@@ -26,3 +26,26 @@ yarn build
 ```
 
 The static files are stored in the `dist` directory.
+
+
+# Basic Sample Hardhat Project
+
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat accounts
+npx hardhat compile
+npx hardhat clean
+npx hardhat test
+npx hardhat node
+node scripts/sample-script.js
+npx hardhat help
+```
+
+## Test Wallet
+
+```
+wagon remind kitten glass auto ugly runway buyer symptom ancient grid nation
+```

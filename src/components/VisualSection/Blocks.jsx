@@ -1,4 +1,6 @@
 import { Block } from "./Block"
+import { Plasma } from "./Plasma"
+import { Glitch } from "./Glitch"
 
 // Format Function
 String.prototype.format = function () {
@@ -12,25 +14,17 @@ export class Blocks {
   constructor(p, dimensions, resolution) {
     // Set p as p5js handle
     this.p = p
-
     this.dimensions = dimensions
     this.resolution = resolution
-    this.artifacts_min = 3
+
     this.artifacts_dimensions = [
       [4, 4],
       [3, 3],
-      [2, 2],
-      [2, 2],
-      [2, 2],
       [2, 2]
     ]
-
-    // Probabilities of 4x4, 3x3, 2x2
-    this.probabilities = [90, 90, 100, 100, 100, 100]
+    this.artifacts = [1, 1, 3]
 
     // Some empty arrays
-    this.colors = []
-    this.baseImage = 0
     this.grid = Array(this.dimensions)
       .fill()
       .map(() => Array(this.dimensions).fill(-1))
@@ -38,51 +32,28 @@ export class Blocks {
       .fill()
       .map(() => Array(this.dimensions).fill(-1))
     
+    this.overOverlayGrid = Array(this.dimensions)
+      .fill()
+      .map(() => Array(this.dimensions).fill(-1))
+
+    this.grainGrid = Array(this.dimensions)
+    .fill()
+    .map(() => Array(this.dimensions).fill(-1))
+
     this.images = []
     this.backgroundImages = []
 
     this.background = null;
-    this.blocks = []
-    this.overlayBlocks = []
-    this.overlayNumbers = []
+    this.grain = null;
+    this.blocks = [[], []]
 
-    // Set up grid properly
-    for (var i = 0; i < this.dimensions; i++) {
-      this.grid[i] = new Array(this.dimensions)
-      for (var j = 0; j < this.dimensions; j++) {
-        this.grid[i][j] = -1
-      }
-    }
-
-    this.colorScheme = 0
-    this.overlayColorScheme = 0
   }
 
+  // bg, secondbg, fg, highlight
   // Some Helper Functions
   getRandomInt(max) {
     max = Math.floor(max)
     return Math.floor(Math.random() * (max + 1))
-  }
-
-  // Load Color List
-  loadBackgroundForegroundSimplePairs() {
-    this.colors.push([this.p.color(1, 1, 1), this.p.color(255, 255, 255)])
-    this.colors.push([this.p.color(71, 26, 255), this.p.color(0, 255, 206)])
-    this.colors.push([this.p.color(105, 0, 190), this.p.color(255, 142, 60)])
-    this.colors.push([this.p.color(81, 102, 124), this.p.color(81, 255, 62)])
-    this.colors.push([this.p.color(5, 85, 123), this.p.color(232, 26, 217)])
-    this.colors.push([this.p.color(252, 111, 175), this.p.color(70, 70, 70)])
-    this.colors.push([this.p.color(42, 23, 62), this.p.color(252, 16, 39)])
-    this.colors.push([this.p.color(5, 164, 170), this.p.color(239, 244, 56)])
-
-    this.colors.push([this.p.color(221, 186, 189), this.p.color(86, 100, 173)])
-    this.colors.push([this.p.color(175, 206, 195), this.p.color(211, 103, 106)])
-    this.colors.push([this.p.color(176, 192, 204), this.p.color(49, 103, 124)])
-    this.colors.push([this.p.color(202, 186, 159), this.p.color(127, 102, 57)])
-    this.colors.push([this.p.color(194, 183, 185), this.p.color(96, 89, 85)])
-    this.colors.push([this.p.color(168, 155, 207), this.p.color(192, 208, 214)])
-    this.colors.push([this.p.color(217, 219, 149), this.p.color(185, 128, 156)])
-    this.colors.push([this.p.color(236, 182, 140), this.p.color(120, 120, 120)])
   }
 
   // Load SVGs
@@ -102,65 +73,8 @@ export class Blocks {
       this.backgroundImages.push(SVGFile)
     }
 
-  }
+    this.grainImages = this.p.loadSVG("images/plasma/grain.svg")
 
-  // Artifacts Helper Functions
-  calculateArtifacts() {
-    var artifacts_num = 0
-    // [4x4, 3x3, 2x2]
-    var artifacts = [0, 0, 0, 0, 0, 0]
-
-    for (let i = 0; i < artifacts.length; i++) {
-      let dice = this.getRandomInt(100)
-      if (dice <= this.probabilities[i]) {
-        artifacts[i]++
-        artifacts_num++
-      }
-    }
-
-    return artifacts
-  }
-
-  drawBlocks(drawArray) {
-    for (var i = 0; i < drawArray.length; i++) {
-      drawArray[i].draw()
-    }
-  }
-
-  checkForValidArtifact(externalGrid, x, y, dimension, image) {
-    console.log("Checking for valid: ", x, y)
-    for (let i = x; i < x + dimension; i++) {
-      var edgeDetectionRight = i == x + dimension - 1 ? true : false
-      var edgeDetectionLeft = i == x ? true : false
-      for (let j = y; j < y + dimension; j++) {
-        if (externalGrid[i][j] !== image) {
-          return false
-        }
-        if (edgeDetectionRight) {
-          if (i + 1 < externalGrid.length) {
-            if (externalGrid[i + 1][j] !== image) {
-              console.log("EdgeDetection Right: false")
-              edgeDetectionRight = false
-            }
-          } else {
-            edgeDetectionRight = false
-            console.log("EdgeDetection Right: false")
-          }
-        }
-        if (edgeDetectionLeft) {
-          if (i - 1 > 0) {
-            if (externalGrid[i - 1][j] !== image) {
-              console.log("EdgeDetection Left: false")
-              edgeDetectionLeft = false
-            }
-          } else {
-            edgeDetectionLeft = false
-            console.log("EdgeDetection Left: false")
-          }
-        }
-      }
-    }
-    return !edgeDetectionRight && !edgeDetectionLeft
   }
 
   collisionCheck(grid, x, y, width, height) {
@@ -212,7 +126,7 @@ export class Blocks {
       if (this.path[i].elt.id == "Layer1") {
         this.path[i].attribute(
           "style",
-          "fill:" + this.colors[this.colorScheme][1]
+          "fill:" + this.configuration.color[this.configuration.colorScheme].foregroundColor
         )
         this.path[i].attribute("z", "1")
         this.path[i].attribute("version", "")
@@ -223,7 +137,18 @@ export class Blocks {
       if (this.path[i].elt.id == "Layer2") {
         this.path[i].attribute(
           "style",
-          "fill:" + this.colors[this.overlayColorScheme][1]
+          "fill:" + this.configuration.color[this.configuration.colorScheme].foregroundColor
+        )
+        this.path[i].attribute("z", "2")
+        this.path[i].attribute("version", "")
+        this.path[i].attribute("xmlns", "")
+        this.path[i].attribute("xmlns:xlink", "")
+        this.path[i].attribute("xml:space", "")
+      }
+      if (this.path[i].elt.id == "Layer3") {
+        this.path[i].attribute(
+          "style",
+          "fill:" + this.configuration.color[this.configuration.colorScheme].highlightColor
         )
         this.path[i].attribute("z", "2")
         this.path[i].attribute("version", "")
@@ -234,10 +159,73 @@ export class Blocks {
     }
   }
 
+  loadConfiguration() {
+    this.configuration = {
+      dimensions: this.dimensions,
+      resolution: this.resolution,
+      colorScheme: 0,
+      color : [{
+        backgroundColor: this.p.color(170, 217, 222, 255),
+        foregroundColor : this.p.color(0, 0, 0, 255),
+        secondBackgroundColor : this.p.color(189, 255, 154, 255),
+        highlightColor: this.p.color(255, 255, 255, 255),
+        shadeColor: this.p.color(0, 0, 0, 255),
+        glitchColor: this.p.color(0, 255, 163, 150),
+        glitchInvertedColor: this.p.color(103, 2, 255, 150),
+      }, {
+        backgroundColor : this.p.color(255, 86, 255, 255),
+        foregroundColor : this.p.color(189, 255, 154, 255),
+        secondBackgroundColor : this.p.color(170, 217, 222, 255),
+        highlightColor: this.p.color(255, 255, 255, 255),
+        shadeColor: this.p.color(255, 86, 255, 255),
+        glitchColor: this.p.color(56, 244, 109, 150),
+        glitchInvertedColor: this.p.color(56, 244, 109, 150),
+      }, {
+        backgroundColor : this.p.color(103, 2, 255, 255),
+        foregroundColor : this.p.color(170, 217, 222, 255),
+        secondBackgroundColor : this.p.color(189, 255, 154, 255),
+        highlightColor: this.p.color(255, 184, 0, 255),
+        shadeColor: this.p.color(103, 2, 255, 255),
+        glitchColor: this.p.color(199, 11, 150, 180),
+        glitchInvertedColor: this.p.color(56, 244, 109, 255),
+      }, {
+        backgroundColor : this.p.color(189, 255, 154, 255),
+        foregroundColor : this.p.color(0, 0, 0, 255),
+        secondBackgroundColor : this.p.color(170, 217, 222, 255),
+        highlightColor: this.p.color(255, 86, 255, 255),
+        shadeColor: this.p.color(255, 86, 255, 255),
+        glitchColor: this.p.color(170, 217, 222, 150),
+        glitchInvertedColor: this.p.color(66, 0, 101, 150),
+      }, {
+        backgroundColor : this.p.color(0, 0, 0, 255),
+        foregroundColor : this.p.color(255, 86, 255, 255),
+        secondBackgroundColor : this.p.color(170, 217, 222, 255),
+        highlightColor: this.p.color(0, 0, 0, 255),
+        shadeColor: this.p.color(255, 86, 255, 255),
+        glitchColor: this.p.color(251, 113, 113, 255),
+        glitchInvertedColor: this.p.color(4, 142, 142, 150),
+      }, {
+        backgroundColor : this.p.color(0, 0, 0, 255),
+        foregroundColor : this.p.color(255, 255, 255, 255),
+        secondBackgroundColor : this.p.color(0, 0, 0, 0),
+        highlightColor: this.p.color(0, 0, 0, 255),
+        shadeColor: this.p.color(0, 0, 0, 255),
+        glitchColor: this.p.color(251, 113, 113, 255),
+        glitchInvertedColor: this.p.color(4, 142, 142, 150),
+        glitchRainbowColor: [
+          this.p.color(255, 0, 0, 255),
+          this.p.color(255, 255, 0, 255),
+          this.p.color(0, 0, 255, 255),
+          this.p.color(238, 130, 238, 255),
+        ],
+      }],
+    }
+  }
+
   Init() {
     // Load SVGs and Colors
-    this.loadBackgroundForegroundSimplePairs()
     this.loadSVGs()
+    this.loadConfiguration()
   }
 
   setSVGId(id) {
@@ -249,31 +237,10 @@ export class Blocks {
     }
   }
 
-  Genesis() {
-    // The Genesis code is structured into multiple parts.
-    // Stage 1:
-    // Generate the bigger background layer.
-    // 
-    // Stage 2:
-    // 1x1 tiles on top - but only partially.
-    //
-    // Stage 3:
-    // Bigger artifacts - Partially not rendered. Stage 3 could be swapped with Stage 2
-    //
-    // Stage 4:
-    // Alpha channels on top
-
-    // Stage 1
+  Phase1() {
     this.setSVGId("Layer1")
-    var r = this.getRandomInt(this.colors.length - 1)
-    this.colorScheme = r
-
-    // set Background and Foreground Color
-    this.p.background(this.colors[this.colorScheme][0])
-    let foregroundColor = this.colors[this.colorScheme][1]
-    console.log(this.images)
     
-    // Generate a background image [TODO: This is fixed for now]
+    // Generate a background image
     var vector = this.generatePosition(
       this.grid,
       this.dimensions,
@@ -284,79 +251,166 @@ export class Blocks {
                                 this.dimensions,
                                 this.dimensions,
                                 this.resolution,
-                                foregroundColor,
-                                this.backgroundImages[0],
+                                this.configuration.color[this.configuration.colorScheme].foregroundColor,
+                                this.backgroundImages[this.getRandomInt(this.backgroundImages.length - 1)],
                                 1)
 
-    this.background.draw(0.6)
+    this.background.draw(0.55)
+  }
 
+  Phase2() {
     // Stage 2
     this.setSVGId("Layer2")
-    while (r == this.colorScheme) {
-      r = this.getRandomInt(this.colors.length - 1)
-      this.overlayColorScheme = r
+
+    // Big Artifacts
+    for (let i = 0; i < this.artifacts.length; i++) {
+      for (let j = 0; j < this.artifacts[i]; j++) {
+
+        let vector = this.generatePosition(
+          this.overOverlayGrid,
+          this.artifacts_dimensions[i][0],
+          this.artifacts_dimensions[i][1]
+        )
+
+        if (vector[0]) {
+          let r = this.getRandomInt(this.images.length - 1)
+          this.blocks[1].push(
+            new Block(
+              this.p,
+              vector[1],
+              this.artifacts_dimensions[i][0],
+              this.artifacts_dimensions[i][1],
+              this.resolution,
+              this.configuration.color[this.configuration.colorScheme].secondBackgroundColor,
+              this.images[r],
+              1,
+              this.configuration.color[this.configuration.colorScheme].shadeColor
+            )
+          )
+        }
+      }
     }
 
+    //draw
+    for (let i = 0; i < this.blocks[1].length; i++) {
+      if (Math.random() < 0.01) {
+          this.setSVGId("Layer3")
+        } else {
+          this.setSVGId("Layer2")
+        }
+        this.blocks[1][i].SetBlockId(i+1)
+        this.blocks[1][i].draw(0.6, 1, this.configuration.colorScheme)
+    }
+  }
+
+  Phase3() {
+    // Stage 3
+    this.setSVGId("Layer2")
+
     for (let i = 0; i < (this.dimensions * this.dimensions); i++) {
-      vector = this.generatePosition(
+      let vector = this.generatePosition(
         this.overlayGrid,
         1,
         1
       )
+
       let randomImage = this.p.min(this.getRandomInt(this.images.length), this.images.length - 1)
       if (vector[0]) {
-        this.blocks.push(
+        this.blocks[0].push(
           new Block(
             this.p,
             vector[1],
             1,
             1,
             this.resolution,
-            foregroundColor,
+            this.configuration.color[this.configuration.colorScheme].secondBackgroundColor,
             this.images[randomImage],
-            1)
+            1,
+            this.configuration.color[this.configuration.colorScheme].shadeColor)
         )
       }
     }
-    
-    // Stage 3
-    this.setSVGId("Layer3")
-
-    // // Big Artifacts
-    // for (let i = 0; i < artifacts.length; i++) {
-    //   for (let j = 0; j < artifacts[i]; j++) {
-
-    //     var vector = this.generatePosition(
-    //       this.artifacts_dimensions[i][0],
-    //       this.artifacts_dimensions[i][1]
-    //     )
-    //     if (vector[0]) {
-    //       let r = this.getRandomInt(this.images.length - 1)
-    //       this.blocks.push(
-    //         new Block(
-    //           this.p,
-    //           vector[1],
-    //           this.artifacts_dimensions[i][0],
-    //           this.artifacts_dimensions[i][1],
-    //           this.resolution,
-    //           foregroundColor,
-    //           this.images[category][r],
-    //           1
-    //         )
-    //       )
-    //     }
-    //   }
-    // }
 
     //draw
-    for (let i = 0; i < this.blocks.length; i++) {
-      if (Math.random() < 0.6) {
-        this.blocks[i].draw(0, 0, this.overlayColorScheme)
+    for (let i = 0; i < this.blocks[0].length; i++) {
+      if (Math.random() < 0.50) {
+        if (Math.random() < 0.1) {
+          this.setSVGId("Layer3")
+        } else {
+          this.setSVGId("Layer2")
+        }
+
+        this.blocks[0][i].SetBlockId(this.blocks[1].length + i)
+        this.blocks[0][i].draw(1, 0.75, this.configuration.colorScheme)
+
+        if (Math.random() < 0.50) {
+          this.blocks[0][i].shade()
+        }
       }
     }
+  }
+
+  Phase4() {
+    // Stage 4
+    for (let i = 0; i < Math.max(2, this.getRandomInt(4)); i++) {
+      var item = new Glitch(this.p, this.configuration)
+      item.draw(this.getRandomInt(250) + 50, this.getRandomInt(250) + 100, Math.max(200, this.getRandomInt(300)), Math.max(8, this.getRandomInt(12)))
+    }
+  }
+
+  Phase5() {
+    // Stage 5
+    var vector = this.generatePosition(
+      this.grainGrid,
+      this.dimensions,
+      this.dimensions
+    )
+    this.grain = new Plasma(this.p,
+      vector[1],
+      this.dimensions,
+      this.dimensions,
+      this.resolution * 2,
+      this.configuration.color[this.configuration.colorScheme].foregroundColor,
+      this.grainImages,
+      1)
+
+    this.grain.draw()
+  }
+
+  Genesis() {
+    // The Genesis code is structured into multiple parts.
+    // Stage 1:
+    // Generate the bigger background layer.
+    // 
+    // Stage 2:
+    // Bigger artifacts - Partially not rendered.
+    //
+    // Stage 2.5:
+    // Plasma
+    //
+    // Stage 3:
+    // Lines
+    // 
+    // Stage 4:
+    // 1x1 tiles on top - but only partially.
+    //
+    // Stage 5:
+    // Alpha channels on top
+
+    // Stage 1
+    var r = this.getRandomInt(this.configuration.color.length - 1)
+    this.configuration.colorScheme = r
+
+    // set Background and Foreground Color
+    this.p.background(this.configuration.color[this.configuration.colorScheme].backgroundColor)
+
+    this.Phase1()
+    this.Phase2()
+    this.Phase3()
+    this.Phase4()
+    this.Phase5()
 
     this.colorize()
-    console.log(this)
   }
 
 }
