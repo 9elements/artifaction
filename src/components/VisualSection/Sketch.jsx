@@ -12,7 +12,7 @@ const canvasSize = 400
 const dimensions = 8
 
 var BlocksNFT
-const tokenAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+const tokenAddress = "0x93DF566a8b5D78E605061E3ed14bFd717452E148"
 
 
 /*
@@ -105,6 +105,13 @@ function Sketch() {
 
   const connectHandler = async () => {
     if (window.ethereum) {
+      if (window.ethereum.networkVersion !== 80001) { // Polygon Testnet
+        try {
+          await switchNetwork();
+        } catch(err) {
+          console.error(err)
+        }
+      }
       try {
         const res = await window.ethereum.request({
           method: "eth_requestAccounts",
@@ -117,6 +124,30 @@ function Sketch() {
       console.log("Install MetaMask");
     }
   };
+
+  const switchNetwork = async () => {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: web3.utils.toHex(chainId) }]
+      });
+    } catch (err) {
+        // This error code indicates that the chain has not been added to MetaMask
+      if (err.code === 4902) {
+        await window.ethereum.request({
+          method: 'wallet_addEthereumChain',
+          params: [
+            {
+              chainName: 'Polygon Testnet',
+              chainId: web3.utils.toHex(80001),
+              nativeCurrency: { name: 'MATIC', decimals: 18, symbol: 'MATIC' },
+              rpcUrls: ['https://rpc-mumbai.matic.today/']
+            }
+          ]
+        });
+      }
+    }
+  }
 
   const accountChange = async (newAccount) => {
     try {
