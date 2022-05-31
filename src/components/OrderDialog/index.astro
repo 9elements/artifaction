@@ -37,12 +37,14 @@ import styles from "./styles.module.css"
               <div class={styles.checkboxWrapper}>
                 <input
                   type="radio"
-                  id="size-30x30"
+                  id="size-70x70"
                   value="30x30"
+                  aria-label="30 x 30 cm"
                   name="size"
                   required
                 />
-                <label for="size-30x30">30 x 30 cm</label>
+                <label aria-hidden="true" hidden for="size-30x30">Size</label>
+                <span>30 x 30 cm</span>
               </div>
               <div class={styles.checkboxWrapper}>
                 <input
@@ -50,9 +52,11 @@ import styles from "./styles.module.css"
                   id="size-70x70"
                   value="70x70"
                   name="size"
+                  aria-label="70 x 70 cm"
                   required
                 />
-                <label for="size-70x70">70 x 70 cm</label>
+                <label aria-hidden="true" hidden for="size-70x70">Size</label>
+                <span>70 x 70 cm</span>
               </div>
             </div>
             <div class="prose">
