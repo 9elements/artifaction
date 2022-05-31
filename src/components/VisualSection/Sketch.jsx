@@ -4,13 +4,14 @@ import styles from "./styles.module.css"
 import { Blocks } from "./Blocks"
 import { useEffect, useRef, useState } from "react"
 import { ethers } from "ethers"
-import Artifaction from "../../artifacts/contracts/Artifaction.sol/Artifaction.json"
+import { init } from "@textile/eth-storage"
+
+import Artifaction from "../../artifacts/src/contracts/Artifaction.sol/Artifaction.json"
 
 const canvasSize = 400
 const dimensions = 8
 
 var BlocksNFT
-const tokenAddress = "0x93DF566a8b5D78E605061E3ed14bFd717452E148"
 
 /*
  * CleanUp
@@ -46,6 +47,12 @@ function Sketch() {
   const [errorMessage, setErrorMessage] = useState(null)
   const [account, setAccount] = useState(null)
   const [balance, setBalance] = useState(null)
+
+  const chainId = 80001;
+  const chainName = "Polygon Testnet";
+  const chainRpcs = ["https://matic-mumbai.chainstacklabs.com"];
+
+  const tokenAddress = "0x93DF566a8b5D78E605061E3ed14bFd717452E148";
 
   async function generateBlocks() {
     // Init
@@ -126,7 +133,7 @@ function Sketch() {
         </g>
       `
     })
-
+    console.log(svg.outerHTML)
     setArtworkCode(svg.outerHTML)
 
     // var svgData = document.querySelector("#sketchwrapper svg").outerHTML
@@ -160,7 +167,7 @@ function Sketch() {
 
   const connectHandler = async () => {
     if (window.ethereum) {
-      if (window.ethereum.networkVersion !== 80001) {
+      if (window.ethereum.networkVersion !== chainId) {
         // Polygon Testnet
         try {
           await switchNetwork()
@@ -187,7 +194,7 @@ function Sketch() {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: ethers.utils.hexValue(80001) }],
+        params: [{ chainId: ethers.utils.hexValue(chainId) }],
       })
     } catch (err) {
       // This error code indicates that the chain has not been added to MetaMask
@@ -196,10 +203,10 @@ function Sketch() {
           method: "wallet_addEthereumChain",
           params: [
             {
-              chainName: "Polygon Testnet",
-              chainId: ethers.utils.hexValue(80001),
+              chainName: chainName,
+              chainId: ethers.utils.hexValue(chainId),
               nativeCurrency: { name: "MATIC", decimals: 18, symbol: "MATIC" },
-              rpcUrls: ["https://rpc-mumbai.matic.today/"],
+              rpcUrls: chainRpcs,
             },
           ],
         })
@@ -222,6 +229,9 @@ function Sketch() {
   }
 
   const awardItem = async () => {
+    console.log("awardItem")
+    prepareArtwork()
+    console.log(artworkCode)
     try {
       if (typeof window.ethereum !== "undefined") {
         await connectHandler()
