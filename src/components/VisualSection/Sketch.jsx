@@ -322,12 +322,27 @@ function Sketch() {
                     />
                   </div>
                 </fieldset>
+
                 <input
                   type="hidden"
                   readOnly
                   name="artwork"
                   value={artworkCode}
                 />
+
+                <div className={styles.checkboxWrapper}>
+                  <input type="checkbox" id="privacy" name="privacy" required />
+                  <label htmlFor="privacy">
+                    <span>
+                      I have read the
+                      <a href="https://9elements.com/privacy">
+                        {" "}
+                        privacy policy
+                      </a>
+                      and confirm my agreement
+                    </span>
+                  </label>
+                </div>
 
                 <div className={styles.dialogButtons}>
                   <button
