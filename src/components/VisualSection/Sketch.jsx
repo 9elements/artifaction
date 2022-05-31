@@ -46,6 +46,11 @@ function SetUp(wrappername, containername) {
  * core functionality
  */
 function Sketch() {
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [account, setAccount] = useState(null);
+  const [balance, setBalance] = useState(null);
+
   async function generateBlocks() {
     // Init
     CleanUp("sketchcontainer")
@@ -110,18 +115,20 @@ function Sketch() {
           await switchNetwork();
         } catch(err) {
           console.error(err)
+          setErrorMessage("There was a problem switching the network");
         }
       }
       try {
         const res = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
-        await accountChange(res[0]);
+        await accountChanged(res[0]);
       } catch (err) {
         console.error(err);
+        setErrorMessage("There was a problem connecting to MetaMask");
       }
     } else {
-      console.log("Install MetaMask");
+      setErrorMessage("Install MetaMask");
     }
   };
 
@@ -129,7 +136,7 @@ function Sketch() {
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: web3.utils.toHex(chainId) }]
+        params: [{ chainId: ethers.utils.hexValue(80001) }]
       });
     } catch (err) {
         // This error code indicates that the chain has not been added to MetaMask
@@ -139,7 +146,7 @@ function Sketch() {
           params: [
             {
               chainName: 'Polygon Testnet',
-              chainId: web3.utils.toHex(80001),
+              chainId: ethers.utils.hexValue(80001),
               nativeCurrency: { name: 'MATIC', decimals: 18, symbol: 'MATIC' },
               rpcUrls: ['https://rpc-mumbai.matic.today/']
             }
@@ -149,14 +156,17 @@ function Sketch() {
     }
   }
 
-  const accountChange = async (newAccount) => {
+  const accountChanged = async (newAccount) => {
     try {
       const balance = await window.ethereum.request({
         method: "eth_getBalance",
         params: [newAccount.toString(), "latest"],
       });
+      setBalance(ethers.utils.formatEther(balance));
+      console.log(balance)
     } catch (err) {
       console.error(err);
+      setErrorMessage("There was a problem connecting to MetaMask");
     }
   };
 
@@ -177,11 +187,18 @@ function Sketch() {
     }
   }
 
+  const chainChanged = () => {
+    setErrorMessage(null);
+    setAccount(null);
+    setBalance(null);
+  };
+
   useEffect(() => {
     generateBlocks()
 
     if (window.ethereum) {
-      window.ethereum.on("accountsChanged", accountChange);
+      window.ethereum.on("accountsChanged", accountChanged);
+      window.ethereum.on("chainChanged", chainChanged);
     }
   }, [])
 
@@ -196,7 +213,7 @@ function Sketch() {
         </button>
         <button className="button" onClick={connectHandler}>Connect Metamask</button>
         <button className="button" onClick={awardItem}>
-          How to mine
+          Mine
         </button>
         <button className="button" onClick={generatePDF}>
           PDF
