@@ -221,7 +221,7 @@ function Sketch() {
               >
                 <label hidden>
                   U a Human? don't fill out this field:
-                  <input name="bot-field" />
+                  <input name="normal-field" />
                 </label>
 
                 <fieldset>
