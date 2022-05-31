@@ -215,7 +215,7 @@ function Sketch() {
               <form
                 name="order"
                 method="POST"
-                action="/order-success"
+                // action="/order-success"
                 data-netlify="true"
                 netlify-honeypot="normal-field"
                 // onSubmit={handleSubmit}
@@ -253,7 +253,7 @@ function Sketch() {
                     </div>
                     <div className="prose">
                       <p>
-                        Glicée print on decor smooth art paper 210 gm2. The
+                        Glicée print on decor smooth art paper 210 g/m². The
                         colors may vary slightly.
                       </p>
                     </div>
@@ -323,12 +323,12 @@ function Sketch() {
                   </div>
                 </fieldset>
 
-                <input
+                {/* <input
                   type="hidden"
                   readOnly
                   name="artwork"
                   value={artworkCode}
-                />
+                /> */}
 
                 <div className={styles.checkboxWrapper}>
                   <input type="checkbox" id="privacy" name="privacy" required />
