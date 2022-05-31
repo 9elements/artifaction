@@ -137,7 +137,7 @@ function Sketch() {
   const [artworkCode, setArtworkCode] = useState("")
 
   const orderDialog = useRef(null)
-  const orderForm = useRef(null)
+  // const orderForm = useRef(null)
 
   const openOrderDialog = () => {
     const dialog = orderDialog.current
@@ -156,18 +156,19 @@ function Sketch() {
     generateBlocks()
   }, [])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    let form = orderForm.current
-    let formData = new FormData(form)
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => (window.location.href = "/order-success"))
-      .catch((error) => alert(error))
-  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault()
+  //   let form = orderForm.current
+  //   let formData = new FormData(form)
+
+  //   fetch("/", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString(),
+  //   })
+  //     .then(() => (window.location.href = "/order-success"))
+  //     .catch((error) => alert(error))
+  // }
 
   const onCancel = () => {
     orderDialog.current.close()
@@ -214,10 +215,11 @@ function Sketch() {
               <form
                 name="order"
                 method="POST"
+                action="/order-success"
                 data-netlify="true"
                 netlify-honeypot="normal-field"
-                onSubmit={handleSubmit}
-                ref={orderForm}
+                // onSubmit={handleSubmit}
+                // ref={orderForm}
               >
                 <label hidden>
                   U a Human? don't fill out this field:
