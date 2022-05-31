@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 import { Blocks } from "./Blocks"
 import { useEffect, useRef, useState } from "react"
 import { ethers } from "ethers"
-import Artifaction from "../../contracts/Artifaction.sol/Artifaction.json"
+import Artifaction from "../../artifacts/contracts/Artifaction.sol/Artifaction.json"
 
 const canvasSize = 400
 const dimensions = 8
