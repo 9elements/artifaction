@@ -214,11 +214,16 @@ function Sketch() {
               <form
                 name="order"
                 method="POST"
-                data-netlify-recaptcha="true"
                 data-netlify="true"
+                netlify-honeypot="normal-field"
                 onSubmit={handleSubmit}
                 ref={orderForm}
               >
+                <label hidden>
+                  U a Human? don't fill out this field:
+                  <input name="bot-field" />
+                </label>
+
                 <fieldset>
                   <legend>Select your print size</legend>
                   <div className="input-row">
@@ -321,8 +326,6 @@ function Sketch() {
                   name="artwork"
                   value={artworkCode}
                 />
-
-                <div data-netlify-recaptcha="true"></div>
 
                 <div className={styles.dialogButtons}>
                   <button
