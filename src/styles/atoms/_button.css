@@ -5,6 +5,7 @@
   --focus-outline-color: var(--color);
 
   position: relative;
+  z-index: 1;
   display: inline-flex;
   overflow: hidden;
   height: 3rem;
