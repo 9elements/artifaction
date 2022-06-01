@@ -1,16 +1,1 @@
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<g>
-	<path d="M0,87.5L12.5,100H0V87.5z"/>
-	<path d="M0,75l25,25h12.5L0,62.5V75z"/>
-	<path d="M50,100L0,50h12.5l50,50H50z"/>
-	<path d="M75,100L25,50h12.5l50,50H75z"/>
-	<path d="M100,100L50,50h12.5L100,87.5V100z"/>
-	<path d="M100,75L75,50h12.5L100,62.5V75z"/>
-	<path d="M0,37.5L12.5,50H0V37.5z"/>
-	<path d="M0,25l25,25h12.5L0,12.5V25z"/>
-	<path d="M50,50L0,0h12.5l50,50H50z"/>
-	<path d="M75,50L25,0h12.5l50,50H75z"/>
-	<path d="M100,50L50,0h12.5L100,37.5V50z"/>
-	<path d="M100,25L75,0h12.5L100,12.5V25z"/>
-</g>
-</svg>
+<svg enable-background="new 0 0 100 100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m0 87.5 12.5 12.5h-12.5z"/><path d="m0 75 25 25h12.5l-37.5-37.5z"/><path d="m50 100-50-50h12.5l50 50z"/><path d="m75 100-50-50h12.5l50 50z"/><path d="m100 100-50-50h12.5l37.5 37.5z"/><path d="m100 75-25-25h12.5l12.5 12.5z"/><path d="m0 37.5 12.5 12.5h-12.5z"/><path d="m0 25 25 25h12.5l-37.5-37.5z"/><path d="m50 50-50-50h12.5l50 50z"/><path d="m75 50-50-50h12.5l50 50z"/><path d="m100 50-50-50h12.5l37.5 37.5z"/><path d="m100 25-25-25h12.5l12.5 12.5z"/></svg>
