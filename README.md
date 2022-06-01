@@ -5,6 +5,9 @@
 ## Local Setup
 
 ```shell
+# On first run:
+npx hardhat compile
+
 # Install dependencies with yarn
 yarn install
 
@@ -26,7 +29,6 @@ yarn build
 ```
 
 The static files are stored in the `dist` directory.
-
 
 # Basic Sample Hardhat Project
 
