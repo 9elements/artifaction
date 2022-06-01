@@ -27,7 +27,7 @@
   --index-grain: 999;
 
   /* General */
-  --max-width-prose: 55rem;
+  --max-width-prose: 60ch;
 
   /* Easings (https://gist.github.com/argyleink/36e1c0153d2a783d513bd29c9f25aaf2) */
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
