@@ -4,12 +4,13 @@ import styles from "./styles.module.css"
 import { Blocks } from "./Blocks"
 import { useEffect, useRef, useState } from "react"
 import { ethers } from "ethers"
-import { init } from "@textile/eth-storage"
 
 import Artifaction from "../../artifacts/src/contracts/Artifaction.sol/Artifaction.json"
 
 const canvasSize = 400
 const dimensions = 8
+
+const { init } = require("@textile/eth-storage")
 
 var BlocksNFT
 
@@ -233,7 +234,12 @@ function Sketch() {
   const awardItem = async () => {
     console.log("awardItem")
     prepareArtwork()
-    console.log(artworkCode)
+    
+    const provider = new providers.Web3Provider(window.ethereum);
+    const wallet = provider.getSigner();
+
+    const storage = await init(wallet);
+
     try {
       if (typeof window.ethereum !== "undefined") {
         await connectHandler()
