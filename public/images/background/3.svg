@@ -1,9 +1,1 @@
-<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
-<g>
-	<path d="M0,0v11.8L88.1,100H100V88.1L11.9,0H0z"/>
-	<path d="M0,61.8L38.2,100h23.7L0,38.2V61.8z"/>
-	<path d="M0,100h11.8L0,88.1V100z"/>
-	<path d="M38.2,0L100,61.8V38.1L61.9,0H38.2z"/>
-	<path d="M100,0H88.2L100,11.8V0z"/>
-</g>
-</svg>
+<svg enable-background="new 0 0 100 100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path d="m0 0v11.8l88.1 88.2h11.9v-11.9l-88.1-88.1z"/><path d="m0 61.8 38.2 38.2h23.7l-61.9-61.8z"/><path d="m0 100h11.8l-11.8-11.9z"/><path d="m38.2 0 61.8 61.8v-23.7l-38.1-38.1z"/><path d="m100 0h-11.8l11.8 11.8z"/></svg>
